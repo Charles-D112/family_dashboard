@@ -1,0 +1,2 @@
+class TropheesController < ApplicationController
+end
