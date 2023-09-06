@@ -1,0 +1,16 @@
+<h1>Mes To Do Lists</h1>
+
+<% @list.each do |list| %>
+
+  <h2><%= link_to list.name, list_path(list) %></h2>
+  <ul>
+    <% list.tasks.each do |task| %>
+      <li><%= task.name %></li>
+    <% end %>
+  </ul>
+  <% if list.tasks.present? %>
+    <%= link_to "Modifier", edit_list_task_path(list, list.tasks.last) %>
+  <% end %>
+<% end %>
+
+<%= link_to "Créer une nouvelle liste", new_list_path %>
