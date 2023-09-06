@@ -1,0 +1,7 @@
+<%= simple_form_for(@tuto) do |f| %>
+  <%= f.input :name, required: true %>
+  <%= f.input :description, required: true %>
+  <%= f.input :url %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit "Soumettre", class: "btn btn-primary" %>
+<% end %>
