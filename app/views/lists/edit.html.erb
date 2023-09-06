@@ -1,0 +1,24 @@
+<h1>Modifier <%= @list.name %></h1>
+
+<%= form_with model: @list, url: list_path(@list), method: :patch do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <h2>Tâches associées</h2>
+  <%= form.fields_for :tasks do |task_fields| %>
+    <div class="field">
+      <%= task_fields.label :name, "Nom de la tâche" %>
+      <%= task_fields.text_field :name %>
+      <%= task_fields.check_box :_destroy, class: "task-destroy-checkbox" %>
+      <%= task_fields.label :_destroy, "Supprimer" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "Mettre à jour #{@list.name}" %>
+  </div>
+<% end %>
+
+<%= link_to "Retour ) mes To Do Lists", lists_path %>
