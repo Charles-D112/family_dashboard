@@ -1,32 +1,42 @@
-<body>
-  <div class="container">
-    <div class="content">
-      <div class="todo-list">
-      </div>
-<%= link_to calendars_url do %>
-  <div class="icon">
-      <i class="fas fa-calendar">HEY</i>
-  </div>
-  </div>
-<% end %>
-
-  <div class="icon">
-  </div>
-
-<%= link_to lists_url do %>
-  <div class="icon">hello
-  </div>
-<% end %>
-
-<%= link_to trophees_url do %>
-  <div class="icon">hi
-  </div>
-<% end %>
-      <div class="calendar">
+<div class="container">
+    <div class="left-container">
+      <div class="card">
+          <div class="card-content">
+              <h2>Nom de la Task</h2>
+              <p>Description de la carte.</p>
+              <%= link_to "en savoir plus", lists_url %>
+          </div>
       </div>
     </div>
-  </div>
-</body>
-<footer>
-
-</footer>
+    <div class="right-container">
+      <%= link_to calendars_url, class: "icon" do %>
+          <%= image_tag "schedule.png" %>
+      <% end %>
+      <%= link_to calendars_url, class: "icon" do %>
+        <%= image_tag "bell.png" %>
+      <% end %>
+      <%= link_to lists_url, class: "icon" do %>
+          <%= image_tag "family.png" %>
+      <% end %>
+      <%= link_to trophees_url, class: "icon" do %>
+        <%= image_tag "trophy.png" %>
+      <% end %>
+    </div>
+</div>
+</div>
+      <footer class="footer" id="footer">
+            <%= link_to calendars_url, class: "icon-link" do %>
+                <%= image_tag "schedule.png" %>
+            <% end %>
+            <%= link_to lists_url, class: "icon-link" do %>
+                <%= image_tag "bell.png" %>
+            <% end %>
+            <%= link_to lists_url, class: "icon-link" do %>
+                <%= image_tag "family.png" %>
+            <% end %>
+            <%= link_to trophees_url, class: "icon-link" do %>
+                <%= image_tag "trophy.png" %>
+            <% end %>
+      </div>
+    </footer>
+    <div class="fixed-element"></div>
