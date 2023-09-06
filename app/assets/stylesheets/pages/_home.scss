@@ -1,1 +1,101 @@
 // Specific CSS for your home-page
+.container {
+  display: flex;
+
+}
+
+.left-container {
+  flex: 1;
+  /* Le contenu de la carte ici */
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon img {
+  margin: 10px;
+  margin-top: 100%; /* Espacement entre les icônes */
+  width: 9vw;
+}
+
+.card {
+  max-width: 300px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.card-content p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.card-content a {
+  display: block;
+  text-align: right;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2;
+  overflow: hidden;
+  transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Ajout de la transition d'opacité */
+  opacity: 0; /* Masquer le footer initialement */
+  z-index: 1;
+  margin-bottom: 1vw;
+}
+
+.footer:hover {
+  height: auto; /* Afficher le footer complet au survol */
+  opacity: 1;
+}
+
+.footer:active{
+  height: auto; /* Afficher le footer complet au survol */
+  opacity: 1;
+}
+
+.icon-link {
+  margin: 0 2%; /* Espacement horizontal */ /* Taille relative en fonction de la largeur de la vue */
+  transition: color 0.3s, transform 0.3s;
+}
+
+.footer img {
+  width: 7vw; /* Largeur souhaitée en pixels */
+  transition: transform 0.3s;
+}
+
+.footer .icon-link:hover img {
+  transform: scale(1.2); /* Effet d'agrandissement au survol */
+}
+
+.fixed-element {
+  width: 100%;
+  height: 5vw;
+  border-top: 1px solid #ccc; /* Bordure de 1 pixel en haut */
+  position: absolute;
+  bottom: 0; /* Pour le placer en bas de la fenêtre du navigateur */
+  background-color: #fff; /* Fond de l'élément fixe */
+}
