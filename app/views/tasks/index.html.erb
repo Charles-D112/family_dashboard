@@ -1,0 +1,11 @@
+<div class="container w-50">
+<h1><%= @list.name %></h1>
+
+  <% @tasks.each do |task| %>
+    <form>
+      <input class="case" type="checkbox" id="task">
+      <label for="task"><%= task.name %></label>
+    </form>
+  <% end %>
+
+</div>
