@@ -1,0 +1,59 @@
+.footer {
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 6vw;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0;
+  transition: height 0.2s ease-in-out, opacity 0.5s ease-in-out 0.5s;
+  z-index: 1;
+}
+
+.footer:hover {
+  height: auto;
+  opacity: 1;
+}
+
+.footer:active{
+  height: auto;
+  opacity: 1;
+}
+
+.icon-link {
+  margin: 0 2%;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.footer img {
+  width: 7vw;
+  transition: transform 0.3s;
+  max-width: 80px;
+}
+
+.footer .icon-link:hover img {
+  transform: scale(1.2);
+}
+
+.fixed-element {
+  width: 100%;
+  height: 5vw;
+  max-height: 50px;
+  border-top: 1px solid #ccc;
+  position: fixed;
+  bottom: 0;
+  background-color: #ffd700;
+  text-align: center;
+}
+
+.fixed-element .icon-footer {
+  max-height: 100%; /* L'icône s'adaptera à la hauteur du conteneur */
+  position: relative; /* Permet de positionner l'icône par rapport au conteneur */
+  z-index: 1; /* Met l'icône au-dessus de la courbe */
+  top: -20px; /* Ajustez cette valeur pour faire déborder l'icône par le haut */
+  background-color: #ffd700;
+  border-top-left-radius: 44%;
+  border-top-right-radius: 44%;
+  min-width: 20px;
+  overflow: hidden;
+}
