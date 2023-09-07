@@ -1,0 +1,9 @@
+<div id="list-details">
+  <h1 id="list-name" data-toggle="modal" data-target="#list-modal"><%= @list.name %></h1>
+  <ul>
+    <% @list.tasks.each do |task| %>
+      <li><%= task.name %></li>
+    <% end %>
+  </ul>
+  <%= link_to "Retour à mes listes", lists_path %>
+</div>

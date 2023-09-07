@@ -1,8 +1,32 @@
 <h1>Mes To Do Lists</h1>
 
 <% @list.each do |list| %>
+  <h2><%= link_to list.name, '#', data: { bs_toggle: 'modal', bs_target: "#list-modal-#{list.id}" } %></h2>
+  <!-- Modal -->
+  <div class="modal fade" id="list-modal-<%= list.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel"><%= list.name %></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <% list.tasks.each do |task| %>
+              <li><%= task.name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <!-- Bouton Supprimer la liste -->
+          <%= button_to "Supprimer la liste", list, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette liste ?" }, class: "btn btn-danger" %>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button type="button" class="btn btn-primary">Enregistrer les modifications</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <h2><%= link_to list.name, list_path(list) %></h2>
   <ul>
     <% list.tasks.each do |task| %>
       <li><%= task.name %></li>
