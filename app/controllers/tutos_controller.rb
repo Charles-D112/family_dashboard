@@ -25,11 +25,12 @@ class TutosController < ApplicationController
   end
 
   def update
-    if @tuto.update(tuto_params)
-      redirect_to tuto_path(@tuto)
-    else
-      render :new, status: :unprocessable_entity
+    @tuto_photos = @tuto.photos
+    @tuto.update(tuto_params)
+    if tuto_params["photos"].join.empty?
+      @tuto.update(photos: @tuto_photos)
     end
+    redirect_to tuto_path(@tuto)
   end
 
   def destroy
