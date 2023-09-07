@@ -2,5 +2,6 @@
 <h1>Modifier le Tuto : <%= @tuto.name %></h1>
 
 <%= render "form", tuto: @tuto %>
+<%= link_to "Annuler", tuto_path(@tuto) %>
 
 </div>
