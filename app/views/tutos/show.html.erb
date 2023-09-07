@@ -3,11 +3,16 @@
     <p> <strong>Description :</strong> <%=  @tuto.description %></p>
     <p> <% if @tuto.url.present? %> URL : <%= link_to @tuto.url, @tuto.url %><% end %></p>
 
-      <% @tuto.photos.each do |photo| %>
-        <p class="mt2"><%= cl_image_tag photo.key, height: 200, width: 200 %></p>
+      <% @tuto.photos.each_with_index do |photo, index| %>
+        <%= cl_image_tag photo.key, height: 200, width: 200, class: "photo-tuto-small", data: { bs_toggle: 'modal', bs_target: "#photo-tuto-#{index}" } %>
+        <!-- Modal -->
+        <div class="modal fade" id=<%= "photo-tuto-#{index}" %> tabindex="-1" aria-labelledby="photoTutoTitle" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-body"><%= cl_image_tag photo.key, height: 500, width: 500 %></div>
+          </div>
+        </div>
       <% end %>
-
-
+  <br>
   <%= link_to "Modifier le tuto", edit_tuto_path %>
   <br>
   <%= link_to "Supprimer le tuto", tuto_path(@tuto), data: { turbo_method: :delete, turbo_confirm: "Voulez-vous supprimer le tuto définitivement ?" } %>
