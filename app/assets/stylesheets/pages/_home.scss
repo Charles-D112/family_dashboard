@@ -6,6 +6,8 @@
 .left-container {
   flex: 1;
   height: auto;
+  margin-left: 10px;
+  margin-top: 5%;
 }
 
 .right-container {
@@ -15,9 +17,10 @@
 
 .icon img {
   margin: 20px;
-  margin-top: 100%;
+  margin-top: 79%;
   width: 8vw;
-  max-width: 80px;
+  max-width: 50px;
+  min-width: 35px;
 }
 
 .card {
@@ -27,7 +30,7 @@
   border-radius: 5px;
   margin: 20px auto;
   overflow: hidden;
-  min-height: 300px;
+  min-height: 350px;
 }
 
 
