@@ -1,14 +1,28 @@
 
 <div id="container">
-    <div class="left-container">
-      <div class="card">
-          <div class="card-content">
-              <h2>Nom de la Task</h2>
-              <p>Description de la carte.</p>
-              <%= link_to "Mes listes", lists_path %>
-          </div>
-      </div>
+<div class="left-container">
+  <div class="card">
+    <div class="card-content">
+      <% @tasks.each do |task| %>
+        <div class="cards">
+          <%= link_to task_path(task), rel: "noopener noreferrer nofollow", target: "listing_#{task.id}", aria_labelledby: "title_#{task.id}" do %>
+            <div class="title-wrapper">
+              <h2 class="title"><%= task.name %></h2>
+            </div>
+          <% end %>
+          <p><strong>Tutorial ID: <%= task.tuto_id %></strong></p>
+          <p><strong><%= @task %></strong></p>
+          <p><strong>List ID: <%= task.list_id %></strong></p>
+          <p><strong>Done: <%= task.done ? 'Yes' : 'No' %></strong></p>
+          <p><strong>Display Tutorial: <%= task.display_tuto ? 'Yes' : 'No' %></strong></p>
+        </div>
+      <% end %>
     </div>
+
+    <%= link_to "Mes listes", lists_path %>
+  </div>
+</div>
+
     <div class="right-container">
       <%= link_to calendars_url, class: "icon" do %>
           <%= image_tag "schedule.png" %>
