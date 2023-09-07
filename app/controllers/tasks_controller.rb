@@ -5,11 +5,10 @@ class TasksController < ApplicationController
   end
 
   def new
-    @list = List.new
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.new(task_params).drop(1)
 
     if @task.save
       redirect_back(fallback_location: root_path, notice: 'Task was successfully created.')
