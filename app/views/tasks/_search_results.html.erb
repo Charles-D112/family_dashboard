@@ -1,0 +1,5 @@
+<% if @tasks.any? %>
+  <%= collection_select(:list, :existing_task_id, @tasks, :id, :name, { prompt: true }) %>
+<% else %>
+  <option value="">Enregistrer cette nouvelle tâche?.</option>
+<% end %>

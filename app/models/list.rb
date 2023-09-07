@@ -1,4 +1,6 @@
 class List < ApplicationRecord
+  attr_accessor :new_task
+
   belongs_to :user
   has_many :tasks
   belongs_to :existing_task, class_name: 'Task', foreign_key: 'existing_task_id', optional: true
