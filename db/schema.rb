@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_06_104347) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_07_110400) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_06_104347) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "existing_task_id"
+    t.text "task_names"
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
@@ -61,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_06_104347) do
     t.bigint "tuto_id"
     t.bigint "executor_id"
     t.bigint "list_id"
+    t.boolean "generic_task", default: false
     t.index ["executor_id"], name: "index_tasks_on_executor_id"
     t.index ["list_id"], name: "index_tasks_on_list_id"
     t.index ["owner_id"], name: "index_tasks_on_owner_id"

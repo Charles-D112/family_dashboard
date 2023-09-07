@@ -1,27 +1,13 @@
-<h1>Créer une nouvelle To Do List</h1>
 
-<%= simple_form_for @list, url: lists_path, method: :post do |form| %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.input :name %>
-  </div>
+<%= simple_form_for @list do |f| %>
+  <%= f.input :name %>
+  <%= f.input :tasks,
+                  as: :check_boxes,
+                  input_html: { class: "tag-selector" },
+                  collection: Task::GENERIC_TASKS,
+                  item_wrapper_class: 'tag-item' %>,
+  <%= f.submit %>
+  <%= f.input :task_names, as: :hidden, input_html: { value: []} %>
+<% end %>
 
-  <div class="field">
-    <%= form.label :existing_task_id, "Tâche existante" %>
-    <%= form.collection_select :existing_task_id, @existing_tasks, :id, :name, { prompt: true } %>
-  </div>
-
-  <h2>Tâches à faire</h2>
-  <%= form.simple_fields_for :tasks do |task_fields| %>
-    <div class="field">
-      <%= task_fields.label :name, "Nom de la tâche" %>
-      <%= task_fields.input :name %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit "Ajouter la liste et les tâches" %>
-  </div>
-</form>
-
-<%= link_to "Retour mes To Do Lists", lists_path %>
+<input type="text">

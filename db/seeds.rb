@@ -63,3 +63,26 @@ Task.create!(
   list: List.first,
   owner: User.last
 )
+
+generic_tasks = [
+  "Faire la vaisselle",
+  "Passer l'aspirateur",
+  "Faire la poussière",
+  "Faire les lits",
+  "Nettoyer la salle de bains",
+  "Laver les sols",
+  "Faire la lessive",
+  "Sortir les poubelles",
+  "Nourrir les animaux",
+  "Faire les courses"
+]
+
+generic_tasks.each do |task_name|
+  Task.create!(
+    name: task_name,
+    done: false,
+    display_tuto: true,
+    generic_task: true,
+    owner: User.first
+  )
+end

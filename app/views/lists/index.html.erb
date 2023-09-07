@@ -1,6 +1,6 @@
 <h1>Mes To Do Lists</h1>
 
-<% @list.each do |list| %>
+<% @lists.each do |list| %>
   <h2><%= link_to list.name, '#', data: { bs_toggle: 'modal', bs_target: "#list-modal-#{list.id}" } %></h2>
   <!-- Modal -->
   <div class="modal fade" id="list-modal-<%= list.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -18,7 +18,6 @@
           </ul>
         </div>
         <div class="modal-footer">
-          <!-- Bouton Supprimer la liste -->
           <%= button_to "Supprimer la liste", list, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette liste ?" }, class: "btn btn-danger" %>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
           <button type="button" class="btn btn-primary">Enregistrer les modifications</button>
