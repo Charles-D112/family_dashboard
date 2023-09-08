@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :lists, only: %i[index show new create destroy] do
+  resources :lists, only: %i[index show new create edit destroy] do
     resources :tasks, only: %i[index show new edit update]
   end
 
@@ -13,6 +13,5 @@ Rails.application.routes.draw do
   resources :tutos
   resources :calendars, only: %i[index show]
   resources :trophees
-
 
 end
