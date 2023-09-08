@@ -10,8 +10,11 @@
               <h2 class="title"><%= task.name %></h2>
             </div>
           <% end %>
-          <p><strong>Pour <%= @task %></strong></p>
-          <p><strong>Déjà faite: <%= task.done ? 'Oui' : 'Non' %></strong></p>
+          <p><strong>Tutorial ID: <%= task.tuto_id %></strong></p>
+          <p><strong><%#= @task %></strong></p>
+          <p><strong>List ID: <%= task.list_id %></strong></p>
+          <p><strong>Done: <%= task.done ? 'Yes' : 'No' %></strong></p>
+          <p><strong>Display Tutorial: <%= task.display_tuto ? 'Yes' : 'No' %></strong></p>
         </div>
 
       <% end %>
