@@ -16,10 +16,11 @@
           <p><strong>Done: <%= task.done ? 'Yes' : 'No' %></strong></p>
           <p><strong>Display Tutorial: <%= task.display_tuto ? 'Yes' : 'No' %></strong></p>
         </div>
+
       <% end %>
+      <%= link_to "Mes listes", lists_path %>
     </div>
 
-    <%= link_to "Mes listes", lists_path %>
   </div>
 </div>
 
