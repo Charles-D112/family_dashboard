@@ -47,6 +47,7 @@
         </div>
         <div class="modal-footer">
           <% if list.persisted? %>
+            <style>.color-99CC5B{background-color:#99CC5B;}</style>
             <%= link_to "Modifier la liste", edit_list_path(list), class: "btn btn-warning btn-pill color-#ffddbd," %> <!-- Ajout de la classe btn-pill -->
           <% end %>
           <%= button_to "Supprimer la liste", list, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette liste ?" }, class: "btn btn-danger btn-pill" %> <!-- Ajout de la classe btn-pill -->
