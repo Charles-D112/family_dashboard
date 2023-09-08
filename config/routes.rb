@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :lists, only: %i[index show new create destroy] do
-    resources :tasks, only: %i[index show new edit update]
+    resources :tasks, only: %i[index show new edit update] do
+      member do
+        put "toggle_done", to: "tasks#toggle_done"
+      end
+    end
   end
 
   resources :tasks, only: %i[create destroy]
