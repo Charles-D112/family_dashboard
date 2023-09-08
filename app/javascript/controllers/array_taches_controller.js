@@ -25,11 +25,8 @@ export default class extends Controller {
     const manualTaskInput = document.getElementById('manual-task-input');
     const manualTaskName = manualTaskInput.value.trim();
     if (manualTaskName !== "") {
-      // Récupérez l'élément d'entrée des tâches manuelles dans le formulaire
       const tasksInput = document.querySelector('input[name="list[tasks][]"]');
-      // Définissez la valeur de l'élément d'entrée des tâches avec la tâche manuelle
       tasksInput.value = manualTaskName;
-      // Ajoutez la tâche manuelle à la liste des tâches
       this.addTaskToList(manualTaskName);
       manualTaskInput.value = "";
     }
