@@ -1,6 +1,8 @@
-<div class="sticky-top bg-light p-3">
-  <h1>Mes To Do Lists</h1>
-  <button type="button" class="btn btn-primary rounded-pill"><%= link_to "Créer une nouvelle liste", new_list_path, style: "color: white; text-decoration: none;" %></button>
+<div class="sticky-top bg-light p-3 text-center">
+  <h1 class="mb-0">Mes To Do Lists</h1>
+  <button type="button" class="btn btn-primary rounded-pill float-end">
+    <%= link_to "Créer une nouvelle liste", new_list_path, style: "color: white; text-decoration: none;" %>
+  </button>
 </div>
 
 <div class="container">
@@ -9,16 +11,21 @@
       <div class="col-md-4 mb-3">
         <div class="card" style="background-color: #22A699;">
           <h2 class="card-title d-flex justify-content-center">
-            <a href="#" data-bs-toggle="modal" data-bs-target="#list-modal-<%= list.id %>" style="color: white; text-decoration: none;">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#list-modal-<%= list.id %>" style="color: white; text-decoration: none; margin-top: 20px;">
               <span class="badge bg-white text-dark rounded-pill">
                 <%= list.name %>
               </span>
             </a>
           </h2>
-          <div class="card-body" style="background-color: white; border-radius: 10px; margin: 30px">
+          <div class="card-body" style="background-color: white; border-radius: 55px; margin: 30px; margin-top: 20px;">
             <ul style="list-style-type: none; padding-left: 0;">
               <% list.tasks.each do |task| %>
-                <li><%= task.name %></li>
+                <li class="task-list-item">
+                  <label>
+                    <input type="checkbox" class="task-done-checkbox">
+                    <%= task.name.gsub("\n", "<br>").html_safe %>
+                  </label>
+                </li>
               <% end %>
             </ul>
           </div>
@@ -32,7 +39,7 @@
   <div class="modal fade" id="list-modal-<%= list.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content" style="background-color: #22A699; border-radius: 10px;">
-        <div class="modal-header d-flex justify-content-center"> <!-- Ajout des classes pour centrer -->
+        <div class="modal-header d-flex justify-content-center">
           <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: black;">
             <span class="bg-white text-22A699 rounded-pill px-3 py-1"><%= list.name %></span>
           </h1>
@@ -41,17 +48,21 @@
         <div class="modal-body" style="background-color: white; border-radius: 10px; margin: 30px;">
           <ul style="list-style-type: none; padding-left: 0;">
             <% list.tasks.each do |task| %>
-              <li><%= task.name %></li>
+              <li class="task-list-item">
+                <label>
+                  <input type="checkbox" class="task-done-checkbox">
+                  <%= task.name.gsub("\n", "<br>").html_safe %>
+                </label>
+              </li>
             <% end %>
           </ul>
         </div>
         <div class="modal-footer">
           <% if list.persisted? %>
             <style>.color-99CC5B{background-color:#99CC5B;}</style>
-            <%= link_to "Modifier la liste", edit_list_path(list), class: "btn btn-warning btn-pill color-#ffddbd," %> <!-- Ajout de la classe btn-pill -->
+            <%= link_to "Modifier la liste", edit_list_path(list), class: "btn btn-warning btn-pill", style: "background-color: #ffddbd;" %>
           <% end %>
-          <%= button_to "Supprimer la liste", list, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette liste ?" }, class: "btn btn-danger btn-pill" %> <!-- Ajout de la classe btn-pill -->
-          <button type="button" class="btn btn-primary btn-pill">Enregistrer les modifications</button> <!-- Ajout de la classe btn-pill -->
+          <%= button_to "Supprimer la liste", list, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette liste ?" }, class: "btn btn-pill", style: "background-color: #ffbdd6;" %>
         </div>
       </div>
     </div>

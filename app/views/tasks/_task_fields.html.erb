@@ -1,0 +1,7 @@
+<div class="task-fields">
+  <%= task_fields.label :name, "Nom de la tâche" %>
+  <%= task_fields.text_field :name, class: "form-control" %>
+
+  <%= task_fields.label :_destroy, "Supprimer la tâche" %>
+  <%= task_fields.check_box :_destroy %>
+</div>

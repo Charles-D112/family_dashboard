@@ -1,0 +1,48 @@
+.task-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.task-list-item label {
+  margin-left: 10px;
+}
+
+.task-done-checkbox {
+  /* Utilisez seulement la version noire sur fond jaune */
+  width: 24px;
+  height: 24px;
+  background-color: #FFC20A;
+  border: 2px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+/* Styling de la coche (cochée) */
+.task-done-checkbox:checked::before {
+  content: "\2713";
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  color: black;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.btn-pill-custom {
+  border-radius: 50px; /* Ajustez le rayon pour obtenir une forme de pill souhaitée */
+  padding-left: 20px; /* Ajustez l'espacement à gauche */
+  padding-right: 20px; /* Ajustez l'espacement à droite */
+  background-color: #ffbdd6; /* Couleur de fond souhaitée */
+  color: white; /* Couleur du texte */
+  border: none; /* Supprimez la bordure si nécessaire */
+}
+
+.btn-pill-custom:hover {
+  background-color: #ff88b6;
+}
