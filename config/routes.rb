@@ -14,5 +14,4 @@ Rails.application.routes.draw do
   resources :calendars, only: %i[index show]
   resources :trophees
 
-
 end

@@ -17,7 +17,7 @@
 
 .icon img {
   margin: 20px;
-  margin-top: 79%;
+  margin-top: 20vh;
   width: 8vw;
   max-width: 50px;
   min-width: 35px;
@@ -27,19 +27,21 @@
   min-width: 150px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  border-radius: 20px;
   margin: 20px auto;
   overflow: hidden;
   min-height: 350px;
+  margin-bottom: 20%;
+  max-width: 800px;
 }
 
 
 .card-content {
   padding: 20px;
+  text-align: center;
 }
 
-.card-content h2 {
-  font-size: 24px;
+.card-content h3 {
   margin: 0;
 }
 
@@ -55,4 +57,79 @@
   color: #007bff;
   font-weight: bold;
   margin-top: 10px;
+}
+
+.cards {
+  background-color: #22A699;
+  border: 1px solid #ccc;
+  border-radius: 34px;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  display: inline-table;
+  min-width: 150px;
+}
+
+.title-wrapper {
+  background-color: #22A699;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+p.done {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.card-content h3 {
+  margin: 0;
+  background-color: #22A699;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  margin-left: 10px;
+}
+
+.task-toggle {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: 1s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.task-toggle:checked + .slider {
+  background-color: #22A699;
+}
+
+.task-toggle:checked + .slider:before {
+  transform: translateX(26px);
 }
