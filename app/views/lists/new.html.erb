@@ -15,7 +15,7 @@
         <%= f.submit %>
       <% end %>
 
-      <%= form_with model: @task, data: { action: "submit->tasks#addManualTask" } do |f| %>
+      <%= form_with url: "/", method: :get, data: { action: "submit->tasks#addManualTask" } do |f| %>
         <%= f.text_field :new_task, data: { tasks_target: "newTaskInput" } %>
         <%= f.submit %>
       <% end %>
