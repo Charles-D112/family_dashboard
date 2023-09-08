@@ -1,39 +1,58 @@
-<h1>Mes To Do Lists</h1>
+<div class="sticky-top bg-light p-3">
+  <h1>Mes To Do Lists</h1>
+  <button type="button" class="btn btn-primary rounded-pill"><%= link_to "Créer une nouvelle liste", new_list_path, style: "color: white; text-decoration: none;" %></button>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="col-md-4 mb-3">
+        <div class="card" style="background-color: #22A699;">
+          <h2 class="card-title d-flex justify-content-center">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#list-modal-<%= list.id %>" style="color: white; text-decoration: none;">
+              <span class="badge bg-white text-dark rounded-pill">
+                <%= list.name %>
+              </span>
+            </a>
+          </h2>
+          <div class="card-body" style="background-color: white; border-radius: 10px; margin: 30px">
+            <ul style="list-style-type: none; padding-left: 0;">
+              <% list.tasks.each do |task| %>
+                <li><%= task.name %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <% @lists.each do |list| %>
-  <h2><%= link_to list.name, '#', data: { bs_toggle: 'modal', bs_target: "#list-modal-#{list.id}" } %></h2>
-  <!-- Modal -->
   <div class="modal fade" id="list-modal-<%= list.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel"><%= list.name %></h1>
+      <div class="modal-content" style="background-color: #22A699; border-radius: 10px;">
+        <div class="modal-header d-flex justify-content-center"> <!-- Ajout des classes pour centrer -->
+          <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: black;">
+            <span class="bg-white text-22A699 rounded-pill px-3 py-1"><%= list.name %></span>
+          </h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <ul>
+        <div class="modal-body" style="background-color: white; border-radius: 10px; margin: 30px;">
+          <ul style="list-style-type: none; padding-left: 0;">
             <% list.tasks.each do |task| %>
               <li><%= task.name %></li>
             <% end %>
           </ul>
         </div>
         <div class="modal-footer">
-          <%= button_to "Supprimer la liste", list, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette liste ?" }, class: "btn btn-danger" %>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-          <button type="button" class="btn btn-primary">Enregistrer les modifications</button>
+          <% if list.persisted? %>
+            <%= link_to "Modifier la liste", edit_list_path(list), class: "btn btn-warning btn-pill color-#ffddbd," %> <!-- Ajout de la classe btn-pill -->
+          <% end %>
+          <%= button_to "Supprimer la liste", list, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette liste ?" }, class: "btn btn-danger btn-pill" %> <!-- Ajout de la classe btn-pill -->
+          <button type="button" class="btn btn-primary btn-pill">Enregistrer les modifications</button> <!-- Ajout de la classe btn-pill -->
         </div>
       </div>
     </div>
   </div>
-
-  <ul>
-    <% list.tasks.each do |task| %>
-      <li><%= task.name %></li>
-    <% end %>
-  </ul>
-  <% if list.tasks.present? %>
-    <%= link_to "Modifier", edit_list_task_path(list, list.tasks.last) %>
-  <% end %>
 <% end %>
-
-<%= link_to "Créer une nouvelle liste", new_list_path %>

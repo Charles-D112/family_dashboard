@@ -1,10 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <!-- Votre formulaire ici (à gauche) -->
       <%= simple_form_for @list, data: { controller: "array-a" } do |f| %>
         <%= f.input :name %>
-        <%= f.input :tasks,
+        <%= f.input :task_strings,
                     as: :check_boxes,
                     input_html: {
                       class: "tag-selector",
@@ -14,8 +13,8 @@
                     collection: Task::GENERIC_TASKS,
                     item_wrapper_class: 'tag-item' %>
         <%= f.submit %>
-        <input type="text" data-target="array-a.input">
-        <button data-action="click->array-a#addManualTask">Ajouter la tâche</button>
+        <input type="text" name="list[task_strings][]" data-target="array-a.input">
+        <button type="button" data-action="click->array-a#addManualTask">Ajouter la tâche</button>
       <% end %>
     </div>
     <div class="col-md-4">
