@@ -47,42 +47,22 @@ Task.create!(
   display_tuto: true,
   list: List.first,
   tuto: Tuto.first,
-  owner: User.first
+  owner: User.first,
+  executor: User.first
 )
 Task.create!(
   name: 'Linge',
-  done: false,
+  done: true,
   display_tuto: true,
   tuto: Tuto.last,
-  owner: User.last
+  owner: User.last,
+  executor: User.first
 )
 Task.create!(
   name: 'Rendez-vous Pédiatre',
-  done: false,
+  done: true,
   display_tuto: false,
   list: List.first,
-  owner: User.last
+  owner: User.last,
+  executor: User.last
 )
-
-generic_tasks = [
-  "Faire la vaisselle",
-  "Passer l'aspirateur",
-  "Faire la poussière",
-  "Faire les lits",
-  "Nettoyer la salle de bains",
-  "Laver les sols",
-  "Faire la lessive",
-  "Sortir les poubelles",
-  "Nourrir les animaux",
-  "Faire les courses"
-]
-
-generic_tasks.each do |task_name|
-  Task.create!(
-    name: task_name,
-    done: false,
-    display_tuto: true,
-    generic_task: true,
-    owner: User.first
-  )
-end
