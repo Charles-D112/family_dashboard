@@ -1,32 +1,33 @@
-<div class="container">
+<div class="container" data-controller="tasks">
   <div class="row">
     <div class="col-md-8">
-      <%= simple_form_for @list, data: { controller: "array-a" } do |f| %>
+      <%= simple_form_for @list, data: { action: "submit->tasks#createList" } do |f| %>
         <%= f.input :name %>
-        <%= f.input :task_strings,
+        <%= f.input :generic_tasks,
                     as: :check_boxes,
                     input_html: {
                       class: "tag-selector",
-                      "data-target" => "array-taches.input",
-                      "data-action" => "array-a#toggleTask"
+                      data: { action: "change->tasks#toggleGenericTask"}
                     },
                     collection: Task::GENERIC_TASKS,
                     item_wrapper_class: 'tag-item' %>
+        <%= f.hidden_field :task_names, multiple: true, data: { tasks_target: "taskNames"} %>
         <%= f.submit %>
-        <input type="text" name="list[task_strings][]" data-target="array-a.input">
-        <button type="button" data-action="click->array-a#addManualTask">Ajouter la tâche</button>
       <% end %>
+
+      <%= form_with url: "/", data: { action: "submit->tasks#addManualTask" } do |f| %>
+        <%= f.text_field :new_task, data: { tasks_target: "newTaskInput" } %>
+        <%= f.submit %>
+      <% end %>
+
     </div>
     <div class="col-md-4">
-      <div id="task-list" data-controller="array-a" data-target="array-a.taskList">
+      <div id="task-list">
         <div class="card">
           <div class="card-header">
-            a ajoutées à la liste
+            Mes tâches ajoutées :
           </div>
-          <div class="card-body">
-            <div data-target="array-a.taskList">
-            </div>
-          </div>
+          <div class="card-body" data-tasks-target="taskList"></div>
         </div>
       </div>
     </div>
