@@ -3,6 +3,10 @@ class PagesController < ApplicationController
 
   def home
     @tasks = Task.all
+<<<<<<< HEAD
     @task = current_user.name
+=======
+    # @task = current_user.name
+>>>>>>> master
   end
 end

@@ -1,0 +1,20 @@
+<div class="container w-50 mt-5">
+<h1><%= "Classement" %></h1>
+
+  <div id="classement">
+    <% @users.each do |user| %>
+      <div id="user-points">
+        <%= user.name %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mt-5"id="test">
+    <% @tasks.each do |task| %>
+      <div id="test1">
+        <%= task.name %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
