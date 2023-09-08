@@ -5,9 +5,11 @@
     <% @users.each do |user| %>
       <div>
         <%= user.name %>
-        <% user.my_executed_tasks.each do |task| %>
-        <%= task.name %>
-        <% end %>
+          <ul>
+            <% user.my_executed_tasks.each do |task| %>
+              <li><%= task.name %> : 1 point </li>
+            <% end %>
+          </ul>
       </div>
     <% end %>
   </div>

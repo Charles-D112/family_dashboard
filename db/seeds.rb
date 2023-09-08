@@ -60,7 +60,7 @@ Task.create!(
 )
 Task.create!(
   name: 'Rendez-vous Pédiatre',
-  done: false,
+  done: true,
   display_tuto: false,
   list: List.first,
   owner: User.last,

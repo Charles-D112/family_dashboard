@@ -6,6 +6,6 @@ class User < ApplicationRecord
   has_many :lists
 
   def my_executed_tasks
-    Task.where(executor: self)
+    Task.where(executor: self, done: true)
   end
 end
