@@ -2,30 +2,30 @@
   <div class="row">
     <div class="col-md-8">
       <!-- Votre formulaire ici (à gauche) -->
-      <%= simple_form_for @list, data: { controller: "array-tâches" } do |f| %>
+      <%= simple_form_for @list, data: { controller: "array-a" } do |f| %>
         <%= f.input :name %>
         <%= f.input :tasks,
                     as: :check_boxes,
                     input_html: {
                       class: "tag-selector",
-                      "data-target" => "array-tâches.input",
-                      "data-action" => "array-tâches#toggleTask"
+                      "data-target" => "array-taches.input",
+                      "data-action" => "array-a#toggleTask"
                     },
                     collection: Task::GENERIC_TASKS,
                     item_wrapper_class: 'tag-item' %>
         <%= f.submit %>
-        <input type="text" data-target="array-tâches.input">
-        <button data-action="click->array-tâches#addManualTask">Ajouter la tâche</button>
+        <input type="text" data-target="array-a.input">
+        <button data-action="click->array-a#addManualTask">Ajouter la tâche</button>
       <% end %>
     </div>
     <div class="col-md-4">
-      <div id="task-list" data-controller="array-tâches" data-target="array-tâches.taskList">
+      <div id="task-list" data-controller="array-a" data-target="array-a.taskList">
         <div class="card">
           <div class="card-header">
-            Tâches ajoutées à la liste
+            a ajoutées à la liste
           </div>
           <div class="card-body">
-            <div data-target="array-tâches.taskList">
+            <div data-target="array-a.taskList">
             </div>
           </div>
         </div>

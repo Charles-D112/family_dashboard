@@ -21,10 +21,10 @@ class ListsController < ApplicationController
   def create
     @list = current_user.lists.build(list_params)
 
-    task_names = params[:list][:task_names].drop(1)
+    tasks = params[:list][:tasks].reject(&blank?)
 
-    task_names.each do |task_name|
-      @list.tasks.build(name: task_name)
+    tasks.each do |task|
+      @list.tasks.build(name: task)
     end
 
     if @list.save
