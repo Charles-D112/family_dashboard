@@ -5,18 +5,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :lists, only: %i[index show new create destroy] do
-    resources :tasks, only: %i[index show new edit update] do
-      member do
-        put "toggle_done", to: "tasks#toggle_done"
-      end
-    end
+  resources :lists, only: %i[index show new create edit destroy] do
+    resources :tasks, only: %i[index show new edit update]
   end
 
   resources :tasks, only: %i[create destroy]
   resources :tutos
   resources :calendars, only: %i[index show]
   resources :trophees
-
 
 end

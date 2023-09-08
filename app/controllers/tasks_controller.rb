@@ -5,17 +5,10 @@ class TasksController < ApplicationController
   end
 
   def new
-    @list = List.new
   end
 
   def create
     @task = Task.new(task_params)
-
-    if @task.save
-      redirect_back(fallback_location: root_path, notice: 'Task was successfully created.')
-    else
-      render 'new'
-    end
   end
 
   def search
@@ -23,5 +16,11 @@ class TasksController < ApplicationController
     @tasks = Task.where('name LIKE ?', "%#{query}%")
 
     render partial: 'tasks/search_results'
+  end
+
+  private
+
+  def task_params
+    params.require(:task).permit(:name, :description, :list_id)
   end
 end
