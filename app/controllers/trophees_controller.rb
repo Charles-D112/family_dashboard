@@ -3,5 +3,8 @@ class TropheesController < ApplicationController
 
   def index
     @trophee = current_user.total_points
+    # @trophees = Trophee.all
+    @users = User.all
+    @tasks = Task.all
   end
 end
