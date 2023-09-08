@@ -6,5 +6,9 @@ class TropheesController < ApplicationController
     # @trophees = Trophee.all
     @users = User.all
     @tasks = Task.all
+    @points = 0
+    # if @task.done == true
+    #   @points += 1
+    # end
   end
 end

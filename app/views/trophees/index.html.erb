@@ -1,18 +1,13 @@
 <div class="container w-50 mt-5">
 <h1><%= "Classement" %></h1>
 
-  <div id="classement">
+  <div>
     <% @users.each do |user| %>
-      <div id="user-points">
+      <div>
         <%= user.name %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="mt-5"id="test">
-    <% @tasks.each do |task| %>
-      <div id="test1">
+        <% user.my_executed_tasks.each do |task| %>
         <%= task.name %>
+        <% end %>
       </div>
     <% end %>
   </div>
