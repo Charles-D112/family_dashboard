@@ -1,13 +1,12 @@
 .footer {
   text-align: center;
   padding: 10px;
-  position: fixed;
-  bottom: 3vw;
-  width: 50%;
+  position: relative;
+  bottom: 17px;
+  width: 100%;
   overflow: hidden;
   opacity: 0;
   transition: height 0.2s ease-in-out, opacity 0.5s ease-in-out 0.5s;
-  left: 25vw;
 }
 
 .footer:hover {
@@ -26,11 +25,10 @@
 }
 
 .footer img {
-  width: 4vw;
   transition: transform 0.3s;
   max-width: 50px;
   min-width: 25px;
-  padding: 1px;
+  padding: 3px;
 }
 
 .footer .icon-link:hover img {
