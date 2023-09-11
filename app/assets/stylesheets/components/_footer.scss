@@ -7,20 +7,17 @@
   overflow: hidden;
   opacity: 0;
   transition: height 0.2s ease-in-out, opacity 0.5s ease-in-out 0.5s;
+  height: fit-content;
 }
 
-.footer:hover {
-  height: auto;
+.visible {
+  display: block;
   opacity: 1;
-}
-
-.footer:active{
-  height: auto;
-  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .icon-link {
-  margin: 0 2%;
+  margin: 0 4%;
   transition: color 0.3s, transform 0.3s;
 }
 
@@ -57,4 +54,11 @@
   border-top-right-radius: 44%;
   min-width: 20px;
   overflow: hidden;
+}
+
+
+
+.rotate {
+  transform: rotate(45deg); /* ou l'angle souhaité */
+  transition: transform 0.5s ease-in-out;
 }
