@@ -1,17 +1,18 @@
 <div class="container w-50 mt-5">
-<h1><%= "Classement" %></h1>
 
-  <div>
+  <div class="d-flex justify-content-around m-4">
+    <%= image_tag "trophy.png", alt: "Coupe Trophee", width: 50 %>
+    <h1><strong><%= "Classement" %></strong></h1>
+    <%= image_tag "trophy.png", alt: "Coupe Trophee", width: 50 %>
+  </div>
+
+  <div id ="background-classement">
     <% @users.each do |user| %>
-      <div>
-        <%= user.name %>
-          <ul>
-            <% user.my_executed_tasks.each do |task| %>
-              <li><%= task.name %> : 1 point </li>
-            <% end %>
-          </ul>
+      <div class="barre-points">
+        <strong><%= user.name %></strong> : <i class="points"><%= user.my_executed_tasks %></i> points
       </div>
     <% end %>
+
   </div>
 
 </div>

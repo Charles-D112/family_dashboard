@@ -1,23 +1,26 @@
 <div class="sticky-top bg-light p-3 text-center">
   <h1 class="mb-0">Mes To Do Lists</h1>
-  <button type="button" class="btn btn-primary rounded-pill float-end">
+  <button type="button" class="btn btn-primary rounded-pill float-md-end d-md-inline-block d-none">
     <%= link_to "Créer une nouvelle liste", new_list_path, style: "color: white; text-decoration: none;" %>
+  </button>
+  <button type="button" class="btn btn-primary rounded-pill d-md-none">
+    <%= link_to "Créer", new_list_path, style: "color: white; text-decoration: none;" %>
   </button>
 </div>
 
 <div class="container">
   <div class="row">
     <% @lists.each do |list| %>
-      <div class="col-md-4 mb-3">
+      <div class="col-12 col-md-4 mb-3">
         <div class="card" style="background-color: #22A699;">
-          <h2 class="card-title d-flex justify-content-center">
-            <a href="#" data-bs-toggle="modal" data-bs-target="#list-modal-<%= list.id %>" style="color: white; text-decoration: none; margin-top: 20px;">
+          <h2 class="card-title d-flex justify-content-center mt-3">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#list-modal-<%= list.id %>" style="color: white; text-decoration: none;">
               <span class="badge bg-white text-dark rounded-pill">
                 <%= list.name %>
               </span>
             </a>
           </h2>
-          <div class="card-body" style="background-color: white; border-radius: 55px; margin: 30px; margin-top: 20px;">
+          <div class="card-body" style="background-color: white; border-radius: 55px; margin: 15px;">
             <ul style="list-style-type: none; padding-left: 0;">
               <% list.tasks.each do |task| %>
                 <li class="task-list-item">
@@ -45,7 +48,7 @@
           </h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body" style="background-color: white; border-radius: 10px; margin: 30px;">
+        <div class="modal-body" style="background-color: white; border-radius: 10px; margin: 15px;">
           <ul style="list-style-type: none; padding-left: 0;">
             <% list.tasks.each do |task| %>
               <li class="task-list-item">
