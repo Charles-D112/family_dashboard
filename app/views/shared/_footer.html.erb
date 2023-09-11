@@ -1,4 +1,4 @@
-    <div class="footer">
+    <div class="footer" data-controller="footer" data-footer-target="footer">
           <%= link_to calendars_url, class: "icon-link" do %>
               <%= image_tag "schedule.png" %>
           <% end %>
@@ -13,7 +13,7 @@
           <% end %>
       </div>
   <div class="fixed-element">
-  <a>
+<a data-action="click->footer#toggleFooter">
   <%= image_tag "calendar-circle.png", class: "icon-footer" %>
-  </a>
+</a>
   </div>
