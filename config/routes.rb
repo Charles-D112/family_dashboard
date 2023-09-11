@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   resources :tasks, only: %i[create destroy]
   resources :tutos
-  resources :calendars, only: %i[index show]
+  resources :meetings, only: %i[index show]
   resources :trophees
-
 end
