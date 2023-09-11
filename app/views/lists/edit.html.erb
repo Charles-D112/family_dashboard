@@ -15,14 +15,11 @@
               <% @list.tasks.each do |task| %>
                 <div class="task-list-item">
                   <label>
-                    <input type="checkbox" class="task-done-checkbox">
                     <%= task.name %>
                   </label>
                   <%= form.fields_for :tasks, task do |task_fields| %>
                     <div class="field">
-                      <%= task_fields.text_field :name, class: "form-control" %>
-                      <%= task_fields.check_box :_destroy, class: "task-destroy-checkbox" %>
-                      <%= task_fields.label :_destroy, "Supprimer" %>
+                      <%= button_to "Supprimer", delete_task_path(task_name: task.name), method: :delete, class: "btn btn-danger", data: { confirm: "Êtes-vous sûr de vouloir supprimer cette tâche?" } %>
                     </div>
                   <% end %>
                 </div>
