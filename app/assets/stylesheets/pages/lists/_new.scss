@@ -24,3 +24,40 @@
   background-color: #c8f4d5;
   color: #555a4d;
 }
+
+.btn-primary {
+  background-color: #22A699 !important;
+  color: white !important;
+  font-weight: bold;
+  margin-top: 5px;
+}
+.btn-primary:hover {
+  background-color: #19947C !important;
+
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pill-input {
+  border-radius: 25px;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.pill-input:focus {
+  border-color: #22A699;
+  outline: none;
+  box-shadow: 0 0 5px rgba(34, 166, 153, 0.5);
+}
+
+.center-label {
+  text-align: center;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+}
