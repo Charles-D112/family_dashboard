@@ -10,32 +10,46 @@ Tuto.destroy_all
 List.destroy_all
 User.destroy_all
 
-User.create!(
+daddy = User.create!(
   password: '123456',
   name: 'Daddy',
   email: 'daddy@parent.com',
   role: 'parent',
-  total_points: 2
+  total_points: 0
 )
-User.create!(
+mommy = User.create!(
   password: '123456',
   name: 'Mommy',
   email: 'mommy@parent.com',
   role: 'parent',
-  total_points: 3
+  total_points: 0
+)
+lea = User.create!(
+  password: '123456',
+  name: 'Léa',
+  email: 'lea@kid.com',
+  role: 'enfant',
+  total_points: 0
+)
+nico = User.create!(
+  password: '123456',
+  name: 'Nico',
+  email: 'nico@kid.com',
+  role: 'enfant',
+  total_points: 0
 )
 
 List.create!(
   name: 'Tâches',
-  user: User.first
+  user: daddy
 )
 
-Tuto.create!(
+aspirateur = Tuto.create!(
   name: 'Aspirateur',
   description: 'Dans le placard dans le couloir.',
   url: 'https://www.youtube.com/watch?v=pYMrXJUAK7I'
 )
-Tuto.create!(
+linge = Tuto.create!(
   name: 'Linge',
   description: 'Ne pas melanger les couleurs',
   url: ''
@@ -46,23 +60,60 @@ Task.create!(
   done: false,
   display_tuto: true,
   list: List.first,
-  tuto: Tuto.first,
-  owner: User.first,
-  executor: User.first
+  tuto: aspirateur,
+  owner: daddy,
+  executor: daddy
 )
 Task.create!(
   name: 'Linge',
   done: true,
   display_tuto: true,
-  tuto: Tuto.last,
-  owner: User.last,
-  executor: User.first
+  tuto: linge,
+  owner: mommy,
+  executor: daddy
+)
+Task.create!(
+  name: 'Révision voiture',
+  done: true,
+  display_tuto: false,
+  owner: mommy,
+  executor: daddy
 )
 Task.create!(
   name: 'Rendez-vous Pédiatre',
   done: true,
   display_tuto: false,
   list: List.first,
-  owner: User.last,
-  executor: User.last
+  owner: mommy,
+  executor: mommy
+)
+
+Task.create!(
+  name: 'Sortir le chien',
+  done: true,
+  display_tuto: true,
+  owner: daddy,
+  executor: nico
+)
+Task.create!(
+  name: 'Mettre la table',
+  done: true,
+  display_tuto: true,
+  owner: mommy,
+  executor: lea
+)
+Task.create!(
+  name: 'Ranger sa chambre',
+  done: true,
+  display_tuto: false,
+  owner: mommy,
+  executor: nico
+)
+Task.create!(
+  name: 'Debarasser la table',
+  done: true,
+  display_tuto: false,
+  list: List.first,
+  owner: mommy,
+  executor: nico
 )

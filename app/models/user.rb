@@ -6,6 +6,11 @@ class User < ApplicationRecord
   has_many :lists
 
   def my_executed_tasks
-    Task.where(executor: self, done: true)
+    @executed_tasks = Task.where(executor: self, done: true)
+    self.total_points = 0
+    @executed_tasks.each do |task|
+      self.total_points += 1
+    end
+    self.total_points
   end
 end
