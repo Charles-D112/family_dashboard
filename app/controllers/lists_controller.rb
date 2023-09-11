@@ -15,9 +15,11 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    @task = Task.new
   end
 
   def create
+    @task = Task.new
     @list = List.new(list_params)
     @list.user = current_user
     if @list.save

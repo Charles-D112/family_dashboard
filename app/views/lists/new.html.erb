@@ -3,7 +3,7 @@
     <div class="col-md-8">
       <%= simple_form_for @list, data: { action: "submit->tasks#createList" } do |f| %>
         <%= f.input :name %>
-        <%= f.input :generic_tasks,
+        <%= f.input :task_names,
                     as: :check_boxes,
                     input_html: {
                       class: "tag-selector",
@@ -15,7 +15,7 @@
         <%= f.submit %>
       <% end %>
 
-      <%= form_with url: "/", data: { action: "submit->tasks#addManualTask" } do |f| %>
+      <%= form_with url: "/", method: :get, data: { action: "submit->tasks#addManualTask" } do |f| %>
         <%= f.text_field :new_task, data: { tasks_target: "newTaskInput" } %>
         <%= f.submit %>
       <% end %>
