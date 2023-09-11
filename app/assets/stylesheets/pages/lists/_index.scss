@@ -11,19 +11,17 @@
 }
 
 .task-done-checkbox {
-  /* Utilisez seulement la version noire sur fond jaune */
-  width: 24px;
-  height: 24px;
-  background-color: #FFC20A;
-  border: 2px solid black;
-  border-radius: 4px;
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 10px;
+  width: 24px !important;
+  height: 24px !important;
+  background-color: #FFC20A !important;
+  border: 2px solid black !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  margin-right: 10px !important;
 }
 
-/* Styling de la coche (cochée) */
 .task-done-checkbox:checked::before {
   content: "\2713";
   font-weight: bold;
@@ -35,12 +33,12 @@
 }
 
 .btn-pill-custom {
-  border-radius: 50px; /* Ajustez le rayon pour obtenir une forme de pill souhaitée */
-  padding-left: 20px; /* Ajustez l'espacement à gauche */
-  padding-right: 20px; /* Ajustez l'espacement à droite */
-  background-color: #ffbdd6; /* Couleur de fond souhaitée */
-  color: white; /* Couleur du texte */
-  border: none; /* Supprimez la bordure si nécessaire */
+  border-radius: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #ffbdd6;
+  color: white;
+  border: none;
 }
 
 .btn-pill-custom:hover {
