@@ -1,8 +1,6 @@
 class ListsController < ApplicationController
   before_action :authenticate_user!
 
-  attr_accessor :task_strings
-
   def index
     @lists = current_user.lists
   end
@@ -17,12 +15,15 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    @task = Task.new
   end
 
   def create
-    @list = current_user.lists.build(list_params)
+    @task = Task.new
+    @list = List.new(list_params)
+    @list.user = current_user
     if @list.save
-      create_tasks_from_strings(params[:list][:task_strings])
+      create_tasks_from_names(list_params[:task_names])
       redirect_to lists_path, notice: "#{@list.name} ajoutée à vos To-Do Lists!"
     else
       render :new
@@ -52,12 +53,10 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    list_params = params.require(:list).permit(:name, task_strings: [])
-    list_params[:task_strings].reject!(&:empty?) if list_params[:task_strings].present?
-    list_params
+    params.require(:list).permit(:name, task_names: [])
   end
 
-  def create_tasks_from_strings(task_strings)
+  def create_tasks_from_names(task_strings)
     task_strings.each do |task_string|
       Task.create(name: task_string, list: @list, owner: current_user)
     end

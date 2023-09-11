@@ -1,34 +1,40 @@
-<div class="container">
+<div class="container" data-controller="tasks">
   <div class="row">
     <div class="col-md-8">
-      <%= simple_form_for @list, data: { controller: "array-a" } do |f| %>
-        <%= f.input :name %>
-        <%= f.input :task_strings,
-                    as: :check_boxes,
-                    input_html: {
-                      class: "tag-selector",
-                      "data-target" => "array-taches.input",
-                      "data-action" => "array-a#toggleTask"
-                    },
-                    collection: Task::GENERIC_TASKS,
-                    item_wrapper_class: 'tag-item' %>
-        <%= f.submit %>
-        <input type="text" name="list[task_strings][]" data-target="array-a.input">
-        <button type="button" data-action="click->array-a#addManualTask">Ajouter la tâche</button>
+      <%= simple_form_for @list, html: { id: "createListForm" }, data: { action: "submit->tasks#createList" } do |f| %>
+        <%= f.input :name, label: "Nom de la liste", label_html: { class: 'center-label' }, input_html: { class: "pill-input" } %>
+        <%= f.input :task_names,
+            label: "Tâches suggérées",
+            label_html: { class: 'center-label' },
+            input_html: { class: "pill-input",
+                          class: "tag-selector",
+                          data: { action: "change->tasks#toggleGenericTask"} },
+            as: :check_boxes,
+            collection: Task::GENERIC_TASKS,
+            item_wrapper_class: 'tag-item' %>
+        <%= f.hidden_field :task_names, multiple: true, data: { tasks_target: "taskNames"} %>
+      <% end %>
+
+      <%= form_with url: "/", method: :get, data: { action: "submit->tasks#addManualTask" } do |f| %>
+        <%= f.text_field :new_task, class: "pill-input",  data: { tasks_target: "newTaskInput" } %>
+        <%= f.submit "Ajouter une tâche", class: "btn btn-primary color-22A699 rounded-pill" %>
       <% end %>
     </div>
+
     <div class="col-md-4">
-      <div id="task-list" data-controller="array-a" data-target="array-a.taskList">
+      <div id="task-list">
         <div class="card">
           <div class="card-header">
-            a ajoutées à la liste
+            Mes tâches ajoutées :
+            <%= button_tag "Créer la liste", type: "submit", form: "createListForm", class: "btn btn-primary color-22A699 rounded-pill" %>
           </div>
-          <div class="card-body">
-            <div data-target="array-a.taskList">
-            </div>
-          </div>
+          <div class="card-body" data-tasks-target="taskList"></div>
         </div>
       </div>
+    </div>
+
+    <div class="return-button-container">
+      <%= link_to "Retour aux listes", lists_path, class: "btn btn-primary color-22A699 rounded-pill" %>
     </div>
   </div>
 </div>
