@@ -22,7 +22,7 @@ export default class extends Controller {
 
   createList(event) {
     event.preventDefault();
-    this.taskNamesTarget.value = tasks.join('<br>');
+    this.taskNamesTarget.value = tasks.join(', ');
     event.target.submit();
   }
 
@@ -38,7 +38,19 @@ export default class extends Controller {
   }
 
   #updateTaskList() {
-    const taskListHTML = tasks.map(task => `<p>${task}</p>`).join('');
+    const taskListHTML = tasks.map(task => `<p>${task}</p>`);
     this.taskListTarget.innerHTML = taskListHTML;
   }
+
+  removeTask(event) {
+    event.preventDefault();
+    const taskNameToRemove = event.currentTarget.getAttribute("data-task-name");
+    const indexToRemove = tasks.indexOf(taskNameToRemove);
+    if (indexToRemove !== -1) {
+      tasks.splice(indexToRemove, 1);
+    }
+    this.#updateTaskList();
+  }
+
+
 }
