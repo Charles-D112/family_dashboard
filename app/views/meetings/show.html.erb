@@ -1,0 +1,12 @@
+<div class="container w-50 mt-3">
+  <h1> <%= @meeting.name %> </h1>
+
+  <div> Date début : <%= @meeting.start_time.strftime('%d %B à %H:%M') %></div>
+  <div> Date fin : <%= @meeting.end_time.strftime('%d %B à %H:%M') %></div>
+
+  <% if @meeting.description.present? %> Description : <%= @meeting.description %><% end %>
+<br>
+  <%= link_to "Supprimer le rendez-vous", meeting_path(@meeting), data: { turbo_method: :delete, turbo_confirm: "Voulez-vous supprimer le rendez-vous définitivement ?" } %>
+  <br>
+  <%= link_to "Modifier le rendez-vous", edit_meeting_path(@meeting) %>
+</div>

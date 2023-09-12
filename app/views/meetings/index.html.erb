@@ -1,0 +1,40 @@
+<div class="container w-75">
+  <h1 class="m-2">Calendrier</h1>
+
+  <div class="meeting">
+  <%= week_calendar(events: @meetings) do |date, meetings| %>
+    <%= date %>
+
+      <% meetings.each do |meeting| %>
+        <div><%= link_to meeting.name, meeting_path(meeting), class: "rdv", data: { bs_toggle: 'modal', bs_target: "#rdv-#{meeting.id}" } %></div>
+
+          <!-- Modal -->
+          <div class="modal fade" id=<%="rdv-#{meeting.id}" %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel"><strong><%= meeting.name %></strong></h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div><%= meeting.description %></div>
+                    <br>
+                    <div> Le : <%= meeting.start_time.strftime('%d %B %Y') %></div>
+                    <div> De : <%= meeting.start_time.strftime('%H:%M') %> à <%= meeting.end_time.strftime('%H:%M') %></div>
+                </div>
+                <div class="modal-footer">
+            <%= link_to "Modifier", edit_meeting_path(meeting), class: "btn btn-warning btn-pill", style: "background-color: #ffddbd;" %>
+            <%= button_to "Supprimer", meeting, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce rendez-vous ?" }, class: "btn btn-pill", style: "background-color: #ffbdd6;" %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        <div ><small><%= meeting.start_time.strftime('%H:%M') %> - <%= meeting.end_time.strftime('%H:%M') %><small></div>
+    <% end %>
+
+  <% end %>
+  </div>
+
+</div>

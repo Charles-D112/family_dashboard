@@ -1,28 +1,28 @@
 
 <div id="container">
-<div data-controller="toggle" class="left-container">
-  <div class="card">
-    <div class="card-content">
-      <h2>TO DO LIST</h2>
-      <% @tasks.each do |task| %>
-        <div class="cards" data-task-id="<%= task.id %>">
-            <div class="title-wrapper">
-              <h3 class="title"><%= task.name %></h3>
-            </div>
-          <p><strong><%= @task %></strong></p>
-            <label class="toggle">
-            <input type="checkbox" class="task-toggle" data-task-id="<%= task.id %>" <%= task.done ? 'checked' : 'yes' %>>
-            <span class="slider"></span>
-        </div>
-      <% end %>
-      <%= link_to "Mes listes", lists_path, class: "mes-listes" %>
+  <div data-controller="toggle" class="left-container">
+    <div class="card">
+      <div class="card-content">
+        <h2>TO DO LIST</h2>
+        <% @tasks.each do |task| %>
+          <div class="cards" data-task-id="<%= task.id %>">
+              <div class="title-wrapper">
+                <h3 class="title"><%= task.name %></h3>
+              </div>
+              <p><strong><%= @task %></strong></p>
+                <label class="toggle">
+                <input type="checkbox" class="task-toggle" data-task-id="<%= task.id %>" <%= task.done ? 'checked' : 'yes' %>>
+                <span class="slider"></span>
+          </div>
+        <% end %>
+        <%= link_to "Mes listes", lists_path, class: "mes-listes" %>
+      </div>
     </div>
   </div>
-</div>
 
 
     <div class="right-container">
-      <%= link_to tutos_url, class: "icon" do %>
+      <%= link_to meetings_url, class: "icon" do %>
           <%= image_tag "schedule.png" %>
       <% end %>
       <%= link_to tutos_url, class: "icon" do %>
