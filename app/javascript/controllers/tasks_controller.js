@@ -22,7 +22,7 @@ export default class extends Controller {
 
   createList(event) {
     event.preventDefault();
-    this.taskNamesTarget.value = tasks.join(', ');
+    this.taskNamesTarget.value = tasks;
     event.target.submit();
   }
 
