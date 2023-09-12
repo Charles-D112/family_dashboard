@@ -26,7 +26,7 @@
                 <li class="task-list-item">
                   <label>
                     <input type="checkbox" class="task-done-checkbox">
-                    <%= task.name.gsub("\n", ", ").html_safe %>
+                    <%= task.name.gsub("\n", "").html_safe %>
                   </label>
                 </li>
               <% end %>
