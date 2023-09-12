@@ -1,0 +1,13 @@
+    <%= simple_form_for(@meeting) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :start_time,
+              label: "Date/Heure début",
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
+      <%= f.input :end_time,
+              label: "Date/Heure fin",
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
+      <%= f.submit "Créer rendez-vous", class: "btn btn-primary" %>
+    <% end %>
