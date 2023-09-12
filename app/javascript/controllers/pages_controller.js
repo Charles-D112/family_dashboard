@@ -13,7 +13,7 @@ export default class extends Controller {
           if (toggle.checked) {
             taskElement.style.display = "none";
           } else {
-            taskElement.style.display = "none";
+            taskElement.style.display = "block";
           }
         }
       });
