@@ -39,7 +39,7 @@ export default class extends Controller {
 
   #updateTaskList() {
     const taskListHTML = tasks.map(task => `<p>${task}</p>`);
-    this.taskListTarget.innerHTML = taskListHTML;
+    this.taskListTarget.innerHTML = taskListHTML.join('<br>');
   }
 
   removeTask(event) {
