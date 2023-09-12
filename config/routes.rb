@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
 
   delete "tasks/:task_name", to: "tasks#destroy", as: :delete_task
-  resources :calendars, only: %i[index show]
 
+  resources :tutos
+  resources :meetings
+  resources :trophees
 end
