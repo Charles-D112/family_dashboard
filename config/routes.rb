@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     resources :tasks, only: %i[index show new edit update]
   end
 
-  delete "tasks/:task_name", to: "tasks#destroy", as: :delete_task
+  delete "tasks/:task_id", to: "tasks#destroy", as: :delete_task
+  #resources :tasks, only: %i[destroy]
 
   resources :tutos
   resources :calendars, only: %i[index show]

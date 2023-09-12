@@ -8,7 +8,7 @@
   </button>
 </div>
 
-<div class="container" data-controller="task-list">
+<div class="container">
   <div class="row">
     <% @lists.each do |list| %>
       <div class="col-12 col-md-4 mb-3">
@@ -23,11 +23,10 @@
           <div class="card-body" style="background-color: white; border-radius: 55px; margin: 15px;">
             <ul style="list-style-type: none; padding-left: 0;">
               <% list.tasks.each do |task| %>
-                <li class="task-list-item" data-controller="task-list" data-action="change->task-list#toggleTaskCompletion">
+                <li class="task-list-item">
                   <label>
-                    <input type="checkbox" class="task-done-checkbox" data-target="task-list.taskName" value="<%= task.name %>">
-                    <span class="task-name <%= task.completed.to_s %>"><%= task.name.gsub("\n", ", ").html_safe %></span>
-                    <span class="task-status" style="display: none;">Fait !</span>
+                    <input type="checkbox" class="task-done-checkbox">
+                    <%= task.name.gsub("\n", "").html_safe %>
                   </label>
                 </li>
               <% end %>
@@ -54,8 +53,8 @@
             <% list.tasks.each do |task| %>
               <li class="task-list-item">
                 <label>
-                  <input type="checkbox" class="task-done-checkbox" data-action="change->task-list#toggleTaskCompletion" value="<%= task.name %>">
-                  <span class="task-name <%= task.completed ? 'completed' : '' %>"><%= task.name.gsub("\n", ", ").html_safe %></span>
+                  <input type="checkbox" class="task-done-checkbox">
+                  <%= task.name.gsub("\n", ", ").html_safe %>
                 </label>
               </li>
             <% end %>

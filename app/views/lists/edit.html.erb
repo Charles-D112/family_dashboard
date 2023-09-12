@@ -17,11 +17,9 @@
                   <label>
                     <%= task.name %>
                   </label>
-                  <%= form.fields_for :tasks, task do |task_fields| %>
                     <div class="field">
-                      <%= button_to "Supprimer", delete_task_path(task_name: task.name), method: :delete, class: "btn btn-danger", data: { confirm: "Êtes-vous sûr de vouloir supprimer cette tâche?" } %>
+                      <%= link_to "Supprimer", delete_task_path(task), data: {turbo_method: :delete}, class: "btn btn-danger" %>
                     </div>
-                  <% end %>
                 </div>
               <% end %>
             </ul>

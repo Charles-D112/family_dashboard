@@ -24,7 +24,7 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     @list.user = current_user
     if @list.save
-      create_tasks_from_names(list_params[:task_names].last.split("<br>"))
+      create_tasks_from_names(list_params[:task_names].last.split(","))
       redirect_to lists_path, notice: "#{@list.name} ajoutée à vos To-Do Lists!"
     else
       render :new
@@ -33,6 +33,7 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
+
   end
 
   def update
@@ -68,9 +69,9 @@ class ListsController < ApplicationController
   end
 
   def create_tasks_from_names(task_strings)
-    task_strings.split("<br>")
+    #task_strings.split("<br>")
     task_strings.each do |task_string|
-      Task.create(name: task_string, list: @list, owner: current_user)
+    Task.create!(name: task_string, list: @list, owner: current_user)
     end
   end
 end
