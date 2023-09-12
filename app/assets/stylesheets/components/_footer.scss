@@ -2,26 +2,24 @@
   text-align: center;
   padding: 10px;
   position: relative;
-  bottom: 17px;
+  bottom: 8vh;
   width: 100%;
   overflow: hidden;
-  opacity: 0;
   transition: height 0.2s ease-in-out, opacity 0.5s ease-in-out 0.5s;
   height: fit-content;
+  opacity: 0;
 }
 
-.visible {
-  display: block;
+.show {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
-
 .icon-link {
   margin: 0 4%;
   transition: color 0.3s, transform 0.3s;
 }
 
-.footer img {
+.fixed-element .footer img {
   transition: transform 0.3s;
   max-width: 50px;
   min-width: 25px;
@@ -47,18 +45,11 @@
 .fixed-element .icon-footer {
   max-height: 100%; /* L'icône s'adaptera à la hauteur du conteneur */
   position: relative; /* Permet de positionner l'icône par rapport au conteneur */
-  z-index: 1; /* Met l'icône au-dessus de la courbe */
-  top: -20px; /* Ajustez cette valeur pour faire déborder l'icône par le haut */
+  z-index: 0; /* Met l'icône au-dessus de la courbe */
+  top: -94px; /* Ajustez cette valeur pour faire déborder l'icône par le haut */
   background-color: #ffd700;
   border-top-left-radius: 44%;
   border-top-right-radius: 44%;
   min-width: 20px;
   overflow: hidden;
-}
-
-
-
-.rotate {
-  transform: rotate(45deg); /* ou l'angle souhaité */
-  transition: transform 0.5s ease-in-out;
 }

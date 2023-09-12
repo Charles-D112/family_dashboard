@@ -1,19 +1,47 @@
-    <div class="footer" data-controller="footer" data-footer-target="footer">
-          <%= link_to calendars_url, class: "icon-link" do %>
-              <%= image_tag "schedule.png" %>
-          <% end %>
-          <%= link_to lists_url, class: "icon-link" do %>
-              <%= image_tag "bell.png" %>
-          <% end %>
-          <%= link_to lists_url, class: "icon-link" do %>
-              <%= image_tag "family.png" %>
-          <% end %>
-          <%= link_to trophees_url, class: "icon-link" do %>
-              <%= image_tag "trophy.png" %>
-          <% end %>
-      </div>
+<% if user_signed_in? %>
   <div class="fixed-element">
-<a data-action="click->footer#toggleFooter">
-  <%= image_tag "calendar-circle.png", class: "icon-footer" %>
-</a>
+    <div class="show">
+    <div class="footer"> <!-- Ajoutez la classe "show" ici -->
+      <%= link_to tutos_url, class: "icon-link" do %>
+        <%= image_tag "schedule.png" %>
+      <% end %>
+      <%= link_to lists_url, class: "icon-link" do %>
+        <%= image_tag "bell.png" %>
+      <% end %>
+      <%= link_to lists_url, class: "icon-link" do %>
+        <%= image_tag "family.png" %>
+      <% end %>
+      <%= link_to trophees_url, class: "icon-link" do %>
+        <%= image_tag "trophy.png" %>
+      <% end %>
+    </div>
+    </div>
+    <a>
+      <%= image_tag "calendar-circle.png", class: "icon-footer" %>
+    </a>
   </div>
+<% else %>
+
+<% end %>
+
+<script>
+function handleScroll() {
+  const scrollHeight = document.documentElement.scrollHeight;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const clientHeight = document.documentElement.clientHeight;
+
+  if (scrollHeight <= clientHeight || scrollHeight - scrollTop === clientHeight) {
+    const footer = document.querySelector(".footer");
+    footer.classList.add("show");
+  } else {
+    const footer = document.querySelector(".footer");
+    footer.classList.remove("show");
+  }
+}
+
+window.addEventListener("scroll", handleScroll);
+window.addEventListener("resize", handleScroll);
+
+window.addEventListener("load", handleScroll);
+
+</script>
