@@ -26,7 +26,7 @@
                 <li class="task-list-item" data-controller="task-list" data-action="change->task-list#toggleTaskCompletion">
                   <label>
                     <input type="checkbox" class="task-done-checkbox" data-target="task-list.taskName" value="<%= task.name %>">
-                    <span class="task-name <%= task.completed ? 'completed' : '' %>"><%= task.name.gsub("\n", ", ").html_safe %></span>
+                    <span class="task-name <%= task.completed.to_s %>"><%= task.name.gsub("\n", ", ").html_safe %></span>
                     <span class="task-status" style="display: none;">Fait !</span>
                   </label>
                 </li>
