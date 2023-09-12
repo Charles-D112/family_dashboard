@@ -1,10 +1,35 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from '@hotwired/stimulus';
 
-const tasks = []
+const completedTasks = new Set(); // Utilisez un ensemble pour stocker les tâches complétées
 
 export default class extends Controller {
+  static targets = ['taskName', 'taskStatus', 'taskList', 'newTaskInput', 'newTaskForm', 'taskNames'];
 
-  static targets = ["taskList", "newTaskInput", "newTaskForm", "taskNames"]
+  connect() {
+    // Écoutez les changements d'état des cases à cocher
+    this.taskNameTargets.forEach((taskName) => {
+      taskName.addEventListener('change', this.toggleTaskCompletion.bind(this));
+      this.updateTaskStatus(taskName); // Mettez à jour l'état initial lors de la connexion
+    });
+  }
+
+  toggleTaskCompletion(event) {
+    const taskName = event.currentTarget;
+    const taskStatus = taskName.nextElementSibling.querySelector('.task-status');
+    if (taskName.checked) {
+      taskStatus.style.display = 'inline';
+      taskName.nextElementSibling.classList.add('completed');
+    } else {
+      taskStatus.style.display = 'none';
+      taskName.nextElementSibling.classList.remove('completed');
+    }
+    // Mettez à jour l'ensemble completedTasks en fonction de l'état actuel de la case à cocher
+    if (taskName.checked) {
+      completedTasks.add(taskName.value);
+    } else {
+      completedTasks.delete(taskName.value);
+    }
+  }
 
   toggleGenericTask(event) {
     const taskName = event.target.value;
@@ -14,43 +39,37 @@ export default class extends Controller {
   addManualTask(event) {
     event.preventDefault();
     const manualTaskName = this.newTaskInputTarget.value.trim();
-    if (manualTaskName !== "") {
+    if (manualTaskName !== '') {
       this.#addTaskToList(manualTaskName);
-      this.newTaskInputTarget.value = "";
+      this.newTaskInputTarget.value = '';
     }
   }
 
   createList(event) {
     event.preventDefault();
-    this.taskNamesTarget.value = tasks;
+    this.taskNamesTarget.value = Array.from(completedTasks);
     event.target.submit();
   }
 
   #addTaskToList(taskName) {
-    tasks.push(taskName);
-    this.#updateTaskList()
+    completedTasks.add(taskName);
+    this.#updateTaskList();
   }
 
   #removeTaskFromList(taskName) {
-    const index = tasks.indexOf(taskName);
-    tasks.splice(index, 1);
-    this.#updateTaskList()
+    completedTasks.delete(taskName);
+    this.#updateTaskList();
   }
 
   #updateTaskList() {
-    const taskListHTML = tasks.map(task => `<p>${task}</p>`);
+    const taskListHTML = Array.from(completedTasks).map(task => `<p>${task}</p>`);
     this.taskListTarget.innerHTML = taskListHTML.join('<br>');
   }
 
   removeTask(event) {
     event.preventDefault();
-    const taskNameToRemove = event.currentTarget.getAttribute("data-task-name");
-    const indexToRemove = tasks.indexOf(taskNameToRemove);
-    if (indexToRemove !== -1) {
-      tasks.splice(indexToRemove, 1);
-    }
+    const taskNameToRemove = event.currentTarget.getAttribute('data-task-name');
+    completedTasks.delete(taskNameToRemove);
     this.#updateTaskList();
   }
-
-
 }

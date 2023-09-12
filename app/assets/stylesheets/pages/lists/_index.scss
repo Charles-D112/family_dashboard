@@ -1,3 +1,44 @@
+.task-done-checkbox {
+  width: 24px !important;
+  height: 24px !important;
+ // background-color: transparent !important;
+  border: 2px solid black !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  margin-right: 10px !important;
+}
+
+input[type="checkbox"]:checked {
+  accent-color: #FFC20A !important;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.task-status {
+  display: none;
+  color: #22A699;
+}
+
+
+//.task-done-checkbox:checked + label span {
+ // font-weight: bold;
+ // text-decoration: line-through;
+ // color: #22A699 !important;
+//}
+
+//.task-done-checkbox:checked + label span.task-status {
+  //display: inline !important;
+  //color: #00FF00 !important;
+//}
+
+.task-done-checkbox:not(:checked) + label span.task-status {
+  display: none !important;
+}
+
 .task-list-item {
   display: flex;
   align-items: center;
@@ -10,50 +51,17 @@
   margin-left: 10px;
 }
 
-.task-done-checkbox {
-  width: 24px !important;
-  height: 24px !important;
-  background-color: transparent !important;
-  border: 2px solid black !important;
-  border-radius: 4px !important;
-  cursor: pointer !important;
-  display: inline-block !important;
-  vertical-align: middle !important;
-  margin-right: 10px !important;
-}
-
-.task-done-checkbox:checked + label::before {
-  content: "\2713";
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 24px;
-  color: black !important;
-  background-color: #FFC20A !important;
-  border: 2px solid black !important;
-  border-radius: 4px !important;
-  width: 24px !important;
-  height: 24px !important;
-  display: inline-block !important;
-  vertical-align: middle !important;
-  margin-right: 10px !important;
-  text-align: center !important;
-}
-
-.task-done-checkbox:checked + label span {
-  font-weight: bold;
-}
-
 .btn-pill-custom {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #ffbdd6;
-  color: white;
-  border: none;
+  background-color: #ffbdd6 !important;
+  color: white !important;
+  border: none !important;
 }
 
 .btn-pill-custom:hover {
-  background-color: #ff88b6;
+  background-color: #ff88b6 !important;
 }
 
 .pill-button {
@@ -72,5 +80,5 @@
 }
 
 .pill-button:hover {
-  background-color: #19947C
+  background-color: #19947C !important;
 }
