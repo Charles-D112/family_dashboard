@@ -74,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_12_103304) do
     t.bigint "executor_id"
     t.bigint "list_id"
     t.boolean "generic_task", default: false
+    t.boolean "completed", default: false
     t.index ["executor_id"], name: "index_tasks_on_executor_id"
     t.index ["list_id"], name: "index_tasks_on_list_id"
     t.index ["owner_id"], name: "index_tasks_on_owner_id"

@@ -18,6 +18,12 @@ class TasksController < ApplicationController
     render partial: 'tasks/search_results'
   end
 
+  def destroy
+    @task = Task.find(params[:task_id])
+    @task.delete
+    redirect_to lists_path, notice: "Liste supprimée avec succès."
+  end
+
   private
 
   def task_params

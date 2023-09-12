@@ -41,16 +41,4 @@ export default class extends Controller {
     const taskListHTML = tasks.map(task => `<p>${task}</p>`);
     this.taskListTarget.innerHTML = taskListHTML.join("<br>");
   }
-
-  removeTask(event) {
-    event.preventDefault();
-    const taskNameToRemove = event.currentTarget.getAttribute("data-task-name");
-    const indexToRemove = tasks.indexOf(taskNameToRemove);
-    if (indexToRemove !== -1) {
-      tasks.splice(indexToRemove, 1);
-    }
-    this.#updateTaskList();
-  }
-
-
 }

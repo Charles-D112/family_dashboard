@@ -33,6 +33,7 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
+
   end
 
   def update
@@ -67,7 +68,7 @@ class ListsController < ApplicationController
 
   def create_tasks_from_names(task_strings)
     task_strings.each do |task_string|
-      Task.create(name: task_string, list: @list, owner: current_user)
+      Task.create!(name: task_string, list: @list, owner: current_user)
     end
   end
 end
