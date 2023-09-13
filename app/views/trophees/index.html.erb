@@ -7,6 +7,7 @@
   <div id ="background-classement">
     <% @users.each do |user| %>
       <div class="barre-points">
+        <%= cl_image_tag user.photo.key, height: 50, width: 50, crop: :fill, radius: 150 %>
         <strong><%= user.name %></strong> : <i class="points"><%= user.my_executed_tasks %></i> points
       </div>
     <% end %>
