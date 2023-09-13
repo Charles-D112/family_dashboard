@@ -1,11 +1,6 @@
 .footer {
   text-align: center;
   padding: 10px;
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  transition: height 0.2s ease-in-out, opacity 0.5s ease-in-out 0.5s;
-  height: fit-content;
   opacity: 0;
 }
 
@@ -49,4 +44,17 @@
   border-top-right-radius: 44%;
   min-width: 20px;
   overflow: hidden;
+}
+
+html, body {
+	height: 100%;
+	margin: 0; padding: 0;
+}
+body {
+	display : table;
+	width: 100%;
+}
+footer {
+	display : table-row;
+	height: 100px;
 }
