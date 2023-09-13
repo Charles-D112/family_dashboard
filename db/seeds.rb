@@ -10,6 +10,7 @@ require "open-uri"
 Task.destroy_all
 Tuto.destroy_all
 List.destroy_all
+Meeting.destroy_all
 User.destroy_all
 
 file = File.open("app/assets/images/avatar-daddy.png")
