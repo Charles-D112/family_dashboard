@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :lists
+  has_many :meetings
   has_one_attached :photo
 
   def my_executed_tasks
