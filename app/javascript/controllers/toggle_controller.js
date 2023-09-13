@@ -1,6 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="toggle"
 export default class extends Controller {
   connect() {
     const taskToggles = this.element.querySelectorAll(".task-toggle");
