@@ -1,52 +1,51 @@
-<div class="container">
+<div class="container" data-controller="tasks" data-tasks-tasks-value="<%=@tasks%>">
   <h1>Modifier <%= @list.name %></h1>
+  <div class="return-button-container">
+    <%= link_to "Retour aux listes", lists_path, class: "btn btn-primary color-22A699 rounded-pill" %>
+  </div>
   <div class="row">
     <div class="col-md-8">
-      <%= form_with model: @list, url: list_path(@list), method: :patch do |form| %>
-        <div class="field">
-          <%= form.label :name %>
-          <%= form.text_field :name, class: "form-control" %>
-        </div>
+      <%= simple_form_for @list, url: list_path(@list), method: :patch, html: { id: "createListForm" }, data: { action: "submit->tasks#createList" } do |f| %>
+        <%= f.input :name, label: "Nom de la liste", label_html: { class: 'center-label' }, input_html: { class: "pill-input" } %>
+        <%= f.input :task_names, label: "Tâches suggérées", label_html: { class: 'center-label' }, input_html: { class: "pill-input" },
+              as: :check_boxes,
+              input_html: {
+                class: "tag-selector",
+                data: { action: "change->tasks#toggleGenericTask"}
+              },
+              collection: Task::GENERIC_TASKS,
+              item_wrapper_class: 'tag-item' %>
+        <%= f.hidden_field :task_names, multiple: true, data: { tasks_target: "taskNames"} %>
+      <% end %>
 
-        <h2>Tâches associées</h2>
-        <div class="card" style="background-color: #22A699;">
-          <div class="card-body">
-            <ul style="list-style-type: none; padding-left: 0;">
-              <% @list.tasks.each do |task| %>
-                <div class="task-list-item">
-                  <label>
-                    <%= task.name %>
-                  </label>
-                    <div class="field">
-                      <%= link_to "Supprimer", delete_task_path(task), data: {turbo_method: :delete}, class: "btn btn-danger" %>
-                    </div>
-                </div>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-
-        <div class="actions">
-          <%= form.submit "Mettre à jour #{@list.name}", class: "btn btn-primary" %>
-        </div>
+      <%= form_with url: "/", method: :get, data: { action: "submit->tasks#addManualTask" } do |f| %>
+        <%= f.text_field :new_task, class: "pill-input",  data: { tasks_target: "newTaskInput" } %>
+        <%= f.submit "Ajouter une tâche", class: "btn btn-primary color-22A699 rounded-pill" %>
       <% end %>
     </div>
 
-    <div class="col-md-4">
-      <%= simple_form_for @list, url: list_path(@list), data: { controller: "array-a" } do |f| %>
-        <%= f.input :task_names,
-                    as: :check_boxes,
-                    input_html: {
-                      class: "tag-selector",
-                      "data-target" => "array-taches.input",
-                      "data-action" => "array-a#toggleTask"
-                    },
-                    collection: Task::GENERIC_TASKS,
-                    item_wrapper_class: 'tag-item' %>
-        <input type="text" name="list[task_strings][]" data-target="array-a.input">
-        <button type="button" data-action="click->array-a#addManualTask">Ajouter la tâche</button>
-        <%= f.submit %>
-      <% end %>
+    <div id="task-list" style="position: relative;">
+      <div class="card" style="background-color: #22A699;">
+        <div class="card-body" style="background-color: white; border-radius: 55px; margin: 15px;">
+          <ul style="list-style-type: none; padding-left: 0;">
+            <div data-tasks-target="taskList">
+              <% @list.tasks.each do |task| %>
+                <li class="task-list-item">
+                  <label style="color: black; text-decoration: none;">
+                    <%= task.name %>
+                  </label>
+                  <div class="field">
+                    <%= link_to "Supprimer", delete_task_path(task), data: {turbo_method: :delete}, class: "btn btn-danger rounded-pill" %>
+                  </div>
+                </li>
+              <% end %>
+            </div>
+          </ul>
+        </div>
+        <div class="actions mt-3" style="position: absolute; bottom: 0px; left: 50%; transform: translateX(-50%);">
+          <%= button_tag "Mettre à jour #{@list.name}", type: "submit", form: "createListForm", class: "btn btn-primary-option rounded-pill" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

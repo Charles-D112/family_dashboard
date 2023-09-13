@@ -16,8 +16,25 @@
 
       <%= form_with url: "/", method: :get, data: { action: "submit->tasks#addManualTask" } do |f| %>
         <%= f.text_field :new_task, class: "pill-input",  data: { tasks_target: "newTaskInput" } %>
-        <%= f.submit "Ajouter une tâche", class: "btn btn-primary color-22A699 rounded-pill" %>
+        <%= f.submit "Ajouter une tâche", class: "btn btn-primary color-22A699 rounded-pill", data: { action: "click->tasks#openModal" } %>
       <% end %>
+
+      <div class="modal fade" id="createTutoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-target="tasks.modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Créer un tutoriel</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Voulez-vous créer un tutoriel pour cette tâche ?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-action="click->tasks#createTuto">Créer un tutoriel</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            </div>
+          </div>
+        </div>
     </div>
 
     <div class="col-md-4">

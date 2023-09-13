@@ -3,10 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @tasks = Task.all
-    current_user_id = current_user.id
-    user = User.find(current_user_id)
-    user_name = user.name
-    @task = user_name
+    @user_name = current_user.name
   end
 
   private

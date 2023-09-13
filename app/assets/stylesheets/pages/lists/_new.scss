@@ -30,11 +30,34 @@
   color: white !important;
   font-weight: bold;
   margin-top: 5px;
+  border-color: #FFC20A;
+  box-shadow: #22A699;
 }
 .btn-primary:hover {
   background-color: #19947C !important;
 
 }
+
+.btn-primary-option {
+  background-color: #FFC20A !important;
+  color: black !important;
+  font-weight: bold;
+  margin-top: 5px;
+  border-color: #22A699;
+  box-shadow: #ECEAFF;
+}
+.btn-primary-option:hover {
+  background-color: #19947C !important;
+  color: white !important;
+
+}
+
+.btn-danger {
+  background-color: #ffbdd6 !important;
+  color: black !important;
+
+}
+
 
 .card-header {
   display: flex;

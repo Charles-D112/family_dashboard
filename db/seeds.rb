@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require "open-uri"
+
 Task.destroy_all
 Tuto.destroy_all
 List.destroy_all
@@ -55,6 +57,7 @@ nico = User.new(
 )
 nico.photo.attach(io: file, filename: "avatar_nico.png", content_type: "image/png")
 nico.save
+
 
 List.create!(
   name: 'Tâches',
