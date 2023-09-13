@@ -1,4 +1,14 @@
 
+    <div class="trophee-container">
+      <%= link_to trophees_url, class: "icon" do %>
+        <%= image_tag "trophy.png" %>
+      <% end %>
+      <% @users.each do |user| %><% user.my_executed_tasks %><% end %>
+      <p> Vous avez actuellement : <i class="points"><%= current_user.my_executed_tasks %> points </i>
+      <p> Vous êtes en ... position </p>
+    </div>
+
+
 <div id="container">
   <div data-controller="toggle" class="left-container">
     <div class="card">
@@ -35,5 +45,6 @@
         <%= image_tag "trophy.png" %>
       <% end %>
     </div>
+
   </div>
 </div>

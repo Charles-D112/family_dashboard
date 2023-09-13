@@ -15,3 +15,4 @@ class User < ApplicationRecord
     self.total_points
   end
 end
+ 
