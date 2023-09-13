@@ -23,6 +23,17 @@ input[type="checkbox"]:checked {
   color: #22A699;
 }
 
+.card-edit {
+  min-width: 150px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  margin: 20px auto;
+  overflow: hidden;
+  margin-bottom: 20px;
+  max-width: 800px;
+}
+
 
 //.task-done-checkbox:checked + label span {
  // font-weight: bold;
