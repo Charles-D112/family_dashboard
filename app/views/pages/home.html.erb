@@ -9,7 +9,7 @@
               <div class="title-wrapper">
                 <h3 class="title"><%= task.name %></h3>
               </div>
-              <p><strong><%= @user_name %></strong></p>
+              <p><strong><%= @task %></strong></p>
                 <label class="toggle">
                 <input type="checkbox" class="task-toggle" data-task-id="<%= task.id %>" <%= task.done ? 'checked' : 'yes' %>>
                 <span class="slider"></span>
@@ -26,7 +26,7 @@
           <%= image_tag "schedule.png" %>
       <% end %>
       <%= link_to tutos_url, class: "icon" do %>
-        <%= image_tag "bell.png" %>
+        <%= image_tag "didacticiel.png" %>
       <% end %>
       <%= link_to lists_url, class: "icon" do %>
           <%= image_tag "family.png" %>
