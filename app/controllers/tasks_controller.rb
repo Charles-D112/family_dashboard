@@ -24,6 +24,17 @@ class TasksController < ApplicationController
     redirect_to lists_path, notice: "Liste supprimée avec succès."
   end
 
+  def complete_task
+    task = Task.find(params[:task_id])
+
+    if task.update(done: true)
+      current_user.increment!(:total_points, 1)
+      head :no_content
+    else
+      render json: { error: 'Échec de la mise à jour de la tâche' }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def task_params

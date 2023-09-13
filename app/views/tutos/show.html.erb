@@ -1,4 +1,4 @@
-<div class="container w-50 mt-5 mb-5">
+<div class="tutos">
   <h1><%= @tuto.name %></h1>
     <p> <strong>Description :</strong> <%=  @tuto.description %></p>
     <p> <% if @tuto.url.present? %> URL : <%= link_to @tuto.url, @tuto.url %><% end %></p>
@@ -13,9 +13,9 @@
         </div>
       <% end %>
   <br>
-  <%= link_to "Modifier le tuto", edit_tuto_path %>
+  <%= link_to "Modifier le tuto", edit_tuto_path, class: "btn btn-primary" %>
   <br>
-  <%= link_to "Supprimer le tuto", tuto_path(@tuto), data: { turbo_method: :delete, turbo_confirm: "Voulez-vous supprimer le tuto définitivement ?" } %>
+  <%= link_to "Supprimer le tuto", tuto_path(@tuto), class: "btn btn-primary",  data: { turbo_method: :delete, turbo_confirm: "Voulez-vous supprimer le tuto définitivement ?" } %>
   <br>
-  <%= link_to "Retour aux tutos", tutos_path %>
+  <%= link_to "Retour aux tutos", tutos_path, class: "btn btn-primary" %>
 </div>
