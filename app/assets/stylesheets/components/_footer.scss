@@ -1,25 +1,20 @@
 .footer {
   text-align: center;
   padding: 10px;
-  position: relative;
-  bottom: 8vh;
-  width: 100%;
-  overflow: hidden;
-  transition: height 0.2s ease-in-out, opacity 0.5s ease-in-out 0.5s;
-  height: fit-content;
   opacity: 0;
 }
 
 .show {
   opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 1s ease-in-out;
 }
+
 .icon-link {
   margin: 0 4%;
   transition: color 0.3s, transform 0.3s;
 }
 
-.fixed-element .footer img {
+.footer img {
   transition: transform 0.3s;
   max-width: 50px;
   min-width: 25px;
@@ -32,24 +27,34 @@
 
 .fixed-element {
   width: 100%;
-  height: 4vw;
   max-height: 50px;
   min-height: 20px;
   border-top: 1px solid #ccc;
-  position: fixed;
-  bottom: 0;
   background-color: #ffd700;
   text-align: center;
 }
 
 .fixed-element .icon-footer {
-  max-height: 100%; /* L'icône s'adaptera à la hauteur du conteneur */
-  position: relative; /* Permet de positionner l'icône par rapport au conteneur */
-  z-index: 0; /* Met l'icône au-dessus de la courbe */
-  top: -94px; /* Ajustez cette valeur pour faire déborder l'icône par le haut */
+  max-height: 25px;
+  position: relative;
+  z-index: 0;
+  top: -20px;
   background-color: #ffd700;
   border-top-left-radius: 44%;
   border-top-right-radius: 44%;
   min-width: 20px;
   overflow: hidden;
+}
+
+html, body {
+	height: 100%;
+	margin: 0; padding: 0;
+}
+body {
+	display : table;
+	width: 100%;
+}
+footer {
+	display : table-row;
+	height: 100px;
 }
