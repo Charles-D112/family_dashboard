@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :trophees
   resources :tutos
-  resources :meetings
-  resources :lists, only: %i[index show new create edit destroy] do
+  resources :lists, only: %i[index show new create edit update destroy] do
     resources :tasks, only: %i[index show new edit update]
   end
   post "tasks/complete_task", to: "tasks#complete_task", as: :complete_task
