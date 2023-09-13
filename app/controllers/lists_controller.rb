@@ -33,12 +33,20 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
-
+    @tasks = @list.tasks.map {|task| task.name}
   end
 
   def update
     @list = List.find(params[:id])
+    @list.tasks.destroy_all
+
     if @list.update(list_params)
+      if list_params[:new_task].present?
+        @list.manual_tasks ||= []
+        @list.manual_tasks << list_params[:new_task]
+      end
+
+      create_tasks_from_names(list_params[:task_names].last.split(","))
       redirect_to lists_path, notice: "#{@list.name} mise à jour avec succès!"
     else
       render :edit
@@ -50,7 +58,7 @@ class ListsController < ApplicationController
     task_to_remove = params[:task]
     return unless @list.task_names.delete(task_to_remove) && @list.save
 
-    redirect_to edit_list_path(@list), notice: "La tâche a été supprimée avec succès."
+    redirect_to edit_list_path, notice: "La tâche a été supprimée avec succès."
   end
 
   def destroy

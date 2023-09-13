@@ -21,7 +21,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:task_id])
     @task.delete
-    redirect_to lists_path, notice: "Liste supprimée avec succès."
+    redirect_to edit_list_path(:list_id), notice: "Tâche supprimée avec succès."
   end
 
   private
