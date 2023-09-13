@@ -40,9 +40,10 @@ function handleScroll() {
   }
 }
 
+// Appeler handleScroll lorsque la page est chargée
+document.addEventListener("turbo:load", handleScroll);
+
 window.addEventListener("scroll", handleScroll);
 window.addEventListener("resize", handleScroll);
-
-window.addEventListener("load", handleScroll);
 
 </script>
