@@ -5,39 +5,59 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require "open-uri"
+
 Task.destroy_all
 Tuto.destroy_all
 List.destroy_all
 User.destroy_all
 
-daddy = User.create!(
+file = File.open("app/assets/images/avatar-daddy.png")
+daddy = User.new(
   password: '123456',
   name: 'Daddy',
   email: 'daddy@parent.com',
   role: 'parent',
-  total_points: 0
+  total_points: 0,
 )
-mommy = User.create!(
+daddy.photo.attach(io: file, filename: "avatar_daddy.png", content_type: "image/png")
+daddy.save
+
+file = File.open("app/assets/images/avatar-mommy.png")
+mommy = User.new(
   password: '123456',
   name: 'Mommy',
   email: 'mommy@parent.com',
   role: 'parent',
   total_points: 0
 )
-lea = User.create!(
+mommy.photo.attach(io: file, filename: "avatar_mommy.png", content_type: "image/png")
+mommy.save
+
+
+file = File.open("app/assets/images/avatar-lea.png")
+lea = User.new(
   password: '123456',
   name: 'Léa',
   email: 'lea@kid.com',
   role: 'enfant',
   total_points: 0
 )
-nico = User.create!(
+lea.photo.attach(io: file, filename: "avatar_lea.png", content_type: "image/png")
+lea.save
+
+
+file = File.open("app/assets/images/avatar-nico.png")
+nico = User.new(
   password: '123456',
   name: 'Nico',
   email: 'nico@kid.com',
   role: 'enfant',
   total_points: 0
 )
+nico.photo.attach(io: file, filename: "avatar_nico.png", content_type: "image/png")
+nico.save
+
 
 List.create!(
   name: 'Tâches',
