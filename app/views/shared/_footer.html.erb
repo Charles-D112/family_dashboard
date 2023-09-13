@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
-  <div class="fixed-element">
+<footer>
     <div class="show">
-    <div class="footer"> <!-- Ajoutez la classe "show" ici -->
+      <div class="footer">
       <%= link_to meetings_url, class: "icon-link" do %>
         <%= image_tag "schedule.png" %>
       <% end %>
@@ -14,15 +14,16 @@
       <%= link_to trophees_url, class: "icon-link" do %>
         <%= image_tag "trophy.png" %>
       <% end %>
+      </div>
     </div>
-    </div>
+      <div class="fixed-element">
     <a>
       <%= image_tag "calendar-circle.png", class: "icon-footer" %>
     </a>
-  </div>
+      </div>
 <% else %>
-
 <% end %>
+</footer>
 
 <script>
 function handleScroll() {
