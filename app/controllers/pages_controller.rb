@@ -4,6 +4,14 @@ class PagesController < ApplicationController
   def home
     @tasks = Task.all
     @user_name = current_user.name
+    # récuperer un array du classement
+    @users = User.all.sort_by { |user| user.my_executed_tasks }.reverse
+    # chercher l'index du current_user
+    @users.each_with_index do |user, index|
+      if user.id == current_user.id
+        @position = "#{index + 1}"
+      end
+    end
   end
 
   private
