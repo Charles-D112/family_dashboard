@@ -18,7 +18,7 @@ daddy = User.new(
   name: 'Daddy',
   email: 'daddy@parent.com',
   role: 'parent',
-  total_points: 0,
+  total_points: 0
 )
 daddy.photo.attach(io: file, filename: "avatar_daddy.png", content_type: "image/png")
 daddy.save
