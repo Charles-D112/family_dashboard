@@ -3,13 +3,13 @@
 
       <div class="img-container">
         <%= link_to trophees_url, class: "icon" do %>
-      <%= image_tag "trophy.png" %>
-      <% end %>
+          <%= image_tag "trophy.png" %>
+        <% end %>
       <p> Vous êtes en position n° <i class="points"><%= @position %></i> avec <i class="points"><%= current_user.my_executed_tasks %></i> points</p>
       </div>
+  </div>
+</div>
 
-  </div>
-  </div>
 <div id="container">
   <div data-controller="toggle" class="left-container">
     <div class="card">
