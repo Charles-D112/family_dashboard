@@ -6,8 +6,7 @@
     <% end %>
 
     <% @users.each do |user| %><% user.my_executed_tasks %><% end %>
-      <p> Vous avez actuellement : <i class="points"><%= current_user.my_executed_tasks %></i> points
-      <p> Vous êtes en position n° <i class="points"><%= @position %></i></p>
+      <p> Vous êtes en position n° <i class="points"><%= @position %></i> avec <i class="points"><%= current_user.my_executed_tasks %></i> points</p>
   </div>
 
   <div data-controller="toggle" class="left-container">
