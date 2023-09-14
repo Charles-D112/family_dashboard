@@ -1,5 +1,5 @@
 <div class="tutos mt-5">
-<h1>Modifier le Tuto : <%= @tuto.name %></h1>
+<h1><strong>Modifier le Tuto : <%= @tuto.name %></strong></h1>
 
 <%= render "form", tuto: @tuto %>
 <%= link_to "Annuler", tuto_path(@tuto), class: "annuler" %>
