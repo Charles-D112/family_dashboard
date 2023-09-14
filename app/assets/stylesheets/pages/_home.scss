@@ -131,3 +131,8 @@ p.done {
 .task-toggle:checked + .slider:before {
   transform: translateX(26px);
 }
+
+.table.table-striped {
+  overflow-x: auto;
+  max-width: 100%;
+}
