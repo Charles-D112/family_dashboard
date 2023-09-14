@@ -1,3 +1,5 @@
+task CONTROLLER
+
 class TasksController < ApplicationController
   def index
     @list = List.find(params[:list_id])
@@ -25,22 +27,15 @@ class TasksController < ApplicationController
   end
 
   def complete_task
-    task = Task.find_by(id: params[:id])
+    task = Task.find(params[:task_id])
 
-    unless task
-      render json: { error: 'Task not found', success: false }, status: :not_found and return
-    end
-
-    new_status = params[:done] == "true"
-
-    if task.update(done: new_status)
-      new_status ? current_user.increment!(:total_points, 1) : current_user.decrement!(:total_points, 1)
-      render json: { success: true }
+    if task.update(done: true)
+      current_user.increment!(:total_points, 1)
+      head :no_content
     else
-      render json: { error: 'Failed to update task', success: false }, status: :unprocessable_entity
+      render json: { error: 'Échec de la mise à jour de la tâche' }, status: :unprocessable_entity
     end
   end
-
 
   private
 

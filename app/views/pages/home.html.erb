@@ -11,18 +11,18 @@
   </div>
   </div>
 <div id="container">
-  <div data-controller="toggle" data-list-id="<%= @list.id %>" class="left-container">
+  <div data-controller="toggle" class="left-container">
     <div class="card">
       <div class="card-content">
         <h2>TO DO LIST</h2>
         <% @tasks.each do |task| %>
-          <div class="cards" data-task-id="<%= task.id %>" style="display: <%= task.done ? 'none' : 'block' %>;">
+          <div class="cards" data-task-id="<%= task.id %>">
               <div class="title-wrapper">
                 <h3 class="title"><%= task.name %></h3>
               </div>
               <p><strong><%= @user_name %></strong></p>
                 <label class="toggle">
-                <input type="checkbox" class="task-toggle" data-task-id="<%= task.id %>" <%= task.done ? 'checked' : '' %>>
+                <input type="checkbox" class="task-toggle" data-task-id="<%= task.id %>" <%= task.done ? 'checked' : 'yes' %>>
                 <span class="slider"></span>
           </div>
         <% end %>
