@@ -1,10 +1,11 @@
-<div class="container w-50 m-5 ">
-<h1><%= "Tutos" %></h1>
 
-<ul>
-    <% @tutos.each do |tuto| %>
-      <li><%= link_to tuto.name, tuto_path(tuto) %></li>
-    <% end %>
-</ul>
-<%= link_to "Créer un tuto", new_tuto_path, class: "btn btn-primary" %>
-</div>
+  <div class="tutos mt-5">
+    <h1><strong><%= "Tutos" %></strong></h1>
+    <ul>
+        <% @tutos.each do |tuto| %>
+          <li><%= link_to tuto.name, tuto_path(tuto) %></li>
+        <% end %>
+    </ul>
+    <%= link_to "Créer un tuto", new_tuto_path, class: "btn btn-primary" %>
+  </div>
+
